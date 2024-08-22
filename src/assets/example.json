@@ -1,0 +1,77 @@
+{
+  "id": 363957,
+  "cn": "夏日口袋",
+  "title": "Summer Pockets",
+  "city": "香川县",
+  "cover": "https://image.anitabi.cn/bangumi/363957.jpg?plan=h160",
+  "color": "#86d8f3",
+  "geo": [34.413422260105904, 134.03733121718165],
+  "zoom": 10.537,
+  "modified": 1724336883355,
+  "litePoints": [
+    {
+      "id": "lpqnah8do",
+      "cn": "宇野駅前",
+      "name": "宇野駅前",
+      "image": "https://image.anitabi.cn/user/1118/bangumi/363957/points/lpqnah8do-1719403660196.jpg?plan=h160",
+      "geo": [34.494, 133.9535]
+    },
+    {
+      "id": "51i52cpr2",
+      "name": "鳥白島の港",
+      "image": "https://image.anitabi.cn/points/363957/51i52cpr2_1672370130703.jpg?plan=h160",
+      "geo": [34.4568, 133.974]
+    },
+    {
+      "id": "51i52cp55",
+      "name": "キービジュアル",
+      "image": "https://image.anitabi.cn/points/363957/51i52cp55_1672370112165.jpg?plan=h160",
+      "geo": [34.4564, 133.9738]
+    },
+    {
+      "id": "lrk8r3dpf",
+      "cn": "直岛自行车租车店",
+      "name": "ふうちゃん レンタサイクル",
+      "image": "https://image.anitabi.cn/user/0/bangumi/363957/points/lrk8r3dpf-1724335438076.jpg?plan=h160",
+      "geo": [34.4575, 133.9748]
+    },
+    {
+      "id": "51i52cp8o",
+      "name": "駄菓子屋",
+      "image": "https://image.anitabi.cn/points/363957/51i52cp8o_1672370125249.jpg?plan=h160",
+      "geo": [34.4601, 133.9748]
+    },
+    {
+      "id": "51i52cpuc",
+      "name": "鳴瀬神社",
+      "image": "https://image.anitabi.cn/points/363957/51i52cpuc_1672370126489.jpg?plan=h160",
+      "geo": [34.468, 133.9754]
+    },
+    {
+      "id": "51i52cpqs",
+      "name": "しろはが居たため池",
+      "image": "https://image.anitabi.cn/points/363957/51i52cpqs_1672370128232.jpg?plan=h160",
+      "geo": [34.4568, 133.9911]
+    },
+    {
+      "id": "51i52cq34",
+      "name": "加藤家前",
+      "image": "https://image.anitabi.cn/points/363957/51i52cq34_1672370151766.jpg?plan=h160",
+      "geo": [34.4609, 133.9979]
+    },
+    {
+      "id": "51i52cqak",
+      "name": "加藤家玄関",
+      "image": "https://image.anitabi.cn/points/363957/51i52cqak_1672370153997.jpg?plan=h160",
+      "geo": [34.4609, 133.9977]
+    },
+    {
+      "id": "51i52cq8u",
+      "name": "食堂",
+      "image": "https://image.anitabi.cn/points/363957/51i52cq8u_1672370152733.jpg?plan=h160",
+      "geo": [34.4609, 133.9977]
+    }
+  ],
+  "pointsLength": 59,
+  "imagesLength": 59
+}

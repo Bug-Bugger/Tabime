@@ -50,9 +50,6 @@ export default function Landing() {
 
   return (
     <div className=" h-screen">
-      <div className=" shadow-md p-6 mx-auto">
-        <h1 className="text-3xl font-sans font-semibold">OtakuOdyssey</h1>
-      </div>
       <div className="flex justify-center">
         {!fileUploaded && (
           <form className="w-1/2 p-6">

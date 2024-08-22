@@ -1,0 +1,15 @@
+.leaflet-container {
+  height: 95vh;
+  width: 90vw;
+}
+
+.leaflet-routing-alternatives-container {
+  display: none;
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+  opacity: 0.7; /* Add transparency */
+}
+
+.leaflet-routing-alt-minimized {
+  display: none;
+}
