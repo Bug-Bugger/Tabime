@@ -1,8 +1,8 @@
 export default function Header() {
   return (
-    <div className="h-auto">
-      <div className="shadow-md p-6 mx-auto">
-        <h1 className="text-3xl font-sans font-semibold">OtakuOdyssey</h1>
+    <div className="h-auto fixed w-full">
+      <div className="p-6 mx-auto">
+        <h1 className="text-3xl font-sans font-semibold">Tabime</h1>
       </div>
     </div>
   );
