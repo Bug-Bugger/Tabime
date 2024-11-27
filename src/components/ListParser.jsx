@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Landing() {
+export default function ListParser() {
   const [sortedXml, setSortedXml] = useState("");
   const [fileUploaded, setFileUploaded] = useState(false);
 
