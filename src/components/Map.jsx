@@ -15,6 +15,7 @@ export default function Map() {
         center={[36.8048, 138.2529]}
         zoom={7}
         scrollWheelZoom={true}
+        className="z-0"
       >
         <TileLayer
           attribution='&copy; <a href="https://carto.com/basemaps">CartoMap</a> contributors'

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 
 const MeshGradientBackground = () => {
@@ -39,14 +39,14 @@ const MeshGradientBackground = () => {
 
   const bg = useRef(null);
 
-  const randomMovement = () => {
+  const randomMovement = useCallback(() => {
     gsap.to(bg.current, {
       backgroundImage: generateRandomGradient(),
       duration: 1.5,
       ease: "linear",
       onComplete: randomMovement,
     });
-  };
+  }, []);
 
   useEffect(() => {
     gsap.set(bg.current, {
@@ -54,7 +54,7 @@ const MeshGradientBackground = () => {
       backgroundImage: generateRandomGradient(),
     });
     randomMovement();
-  }, []);
+  }, [randomMovement]);
 
   return <div ref={bg} className="h-screen gradient"></div>;
 };
