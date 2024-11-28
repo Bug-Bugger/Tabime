@@ -56,7 +56,12 @@ const MeshGradientBackground = () => {
     randomMovement();
   }, [randomMovement]);
 
-  return <div ref={bg} className="h-screen gradient"></div>;
+  return (
+    <div
+      ref={bg}
+      className="fixed z-0 top-0 left-0 w-full h-full gradient"
+    ></div>
+  );
 };
 
 export default MeshGradientBackground;
