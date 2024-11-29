@@ -1,75 +1,14 @@
-import { useState } from "react";
+import GradientButton from "./GradientButton";
 
-export default function Landing() {
-  const [sortedXml, setSortedXml] = useState("");
-  const [fileUploaded, setFileUploaded] = useState(false);
-
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const xmlData = e.target.result;
-      sortXml(xmlData);
-    };
-    reader.readAsText(file);
-  };
-
-  const sortXml = (xmlData) => {
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlData, "application/xml");
-    const animes = Array.from(xmlDoc.getElementsByTagName("anime"));
-
-    const jsonAnimes = [];
-
-    animes.forEach((anime) => {
-      const myScore = anime.getElementsByTagName("my_score")[0];
-      if (myScore) {
-        let title = anime.getElementsByTagName("series_title")[0].textContent;
-        let score = parseFloat(myScore.textContent);
-        jsonAnimes.push({ title, score });
-      }
-    });
-
-    jsonAnimes.sort((a, b) => {
-      return b.score - a.score;
-    });
-    function jsonToTable(jsonData) {
-      let table = '<table border="1"><tr><th>Title</th><th>Score</th></tr>';
-      jsonData.forEach((anime) => {
-        table += `<tr><td>${anime.title}</td><td>${anime.score}</td></tr>`;
-      });
-      table += "</table>";
-      return table;
-    }
-
-    const tableHtml = jsonToTable(jsonAnimes);
-    setFileUploaded(true);
-    setSortedXml(tableHtml);
-  };
-
+const Landing = () => {
   return (
-    <div className=" h-screen">
-      <div className="flex justify-center">
-        {!fileUploaded && (
-          <form className="w-1/2 p-6">
-            <h1 className="block font-medium text-gray-300">
-              Upload list file (XML)
-            </h1>
-            <input
-              type="file"
-              accept=".xml"
-              className="mt-1 block px-3 py-5 w-fit"
-              onChange={handleFileUpload}
-            />
-          </form>
-        )}
+    <div className="h-screen w-screen flex flex-col items-center justify-center bg-transparent z-20 gap-8">
+      <div className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent z-20 leading-relaxed px-7 py-2 text-center">
+        Simplicity For Incredible Journeys
       </div>
-
-      <div
-        className="h-1/2 flex justify-center"
-        dangerouslySetInnerHTML={{ __html: sortedXml }}
-      />
+      <GradientButton>Get Started</GradientButton>
     </div>
   );
-}
+};
+
+export default Landing;
