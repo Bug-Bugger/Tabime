@@ -1,7 +1,11 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import gsap from "gsap";
 
 const MeshGradientBackground = () => {
+  const bg = useRef(null);
+  const animationRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+
   const generateRandomGradient = () => `
       radial-gradient(at ${gsap.utils.random(10, 90)}% ${gsap.utils.random(
     10,
@@ -37,10 +41,8 @@ const MeshGradientBackground = () => {
   )}%,${gsap.utils.random(60, 80)}%,1) 0px, transparent 70%)
     `;
 
-  const bg = useRef(null);
-
   const randomMovement = useCallback(() => {
-    gsap.to(bg.current, {
+    animationRef.current = gsap.to(bg.current, {
       backgroundImage: generateRandomGradient(),
       duration: 1.5,
       ease: "linear",
@@ -54,12 +56,40 @@ const MeshGradientBackground = () => {
       backgroundImage: generateRandomGradient(),
     });
     randomMovement();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Trigger when 10% of the component is visible
+    );
+
+    observer.observe(bg.current);
+
+    return () => {
+      observer.disconnect();
+      if (animationRef.current) {
+        animationRef.current.kill();
+        animationRef.current = null;
+      }
+    };
   }, [randomMovement]);
+
+  useEffect(() => {
+    // Pause or resume animation based on visibility
+    if (animationRef.current) {
+      if (isVisible) {
+        animationRef.current.resume();
+      } else {
+        animationRef.current.pause();
+      }
+    }
+  }, [isVisible]);
 
   return (
     <div
       ref={bg}
-      className="fixed z-0 top-0 left-0 w-full h-full gradient"
+      className="absolute z-0 top-0 left-0 right-0 w-full h-screen gradient"
     ></div>
   );
 };
