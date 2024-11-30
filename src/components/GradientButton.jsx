@@ -10,7 +10,7 @@ const GradientButton = ({
   return (
     <button
       onClick={onClick}
-      className={`px-8 py-3 z-20 text-white font-semibold 
+      className={`px-8 py-3 z-20 text-white font-semibold w-fit
         relative overflow-hidden
         rounded-lg 
         bg-gradient-to-r from-purple-600 to-blue-500
