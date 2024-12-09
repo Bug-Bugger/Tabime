@@ -14,13 +14,16 @@ const GradientButton = ({
         relative overflow-hidden
         rounded-lg 
         bg-gradient-to-r from-purple-600 to-blue-500
-        transition-all duration-500 ease
-        hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-400
         ${className}
-        before:absolute before:inset-0
+        after:absolute after:inset-0 after:z-[1]
+        after:bg-gradient-to-r after:from-purple-500 after:to-blue-400
+        after:opacity-0
+        after:transition-opacity after:duration-700 after:ease-in-out
+        hover:after:opacity-100
+        before:absolute before:inset-0 before:z-[2]
         before:bg-gradient-to-r before:from-transparent before:via-purple-300 before:to-transparent
         before:translate-x-[-100%]
-        before:transition-transform before:duration-500 before:ease-in-out
+        before:transition-transform before:duration-700 before:ease-in-out
         hover:before:translate-x-[100%]`}
     >
       <span className="relative z-10">{children}</span>
