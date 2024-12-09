@@ -1,15 +1,15 @@
 import logo from "../assets/tabime.svg";
 export default function Header() {
   return (
-    <div className="h-auto fixed w-full z-40">
+    <h1 className="h-auto fixed w-full z-40">
       <div className="p-6 mx-auto flex items-center">
         <img
           src={logo}
-          alt="Tabime"
+          alt="Tabime_logo"
           className="w-12 h-12 hover:rotate-180 ease-in-out transition-all duration-500"
         />
         <div className="text-3xl font-sans font-semibold ml-2">Tabime</div>
       </div>
-    </div>
+    </h1>
   );
 }
