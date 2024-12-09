@@ -4,7 +4,7 @@ import MeshGradientBackground from "./MeshGradientBackground";
 
 const FrontPage = () => {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full">
       <Landing />
       <MeshGradientBackground />
       <Description />
