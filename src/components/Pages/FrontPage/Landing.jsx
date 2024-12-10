@@ -1,4 +1,6 @@
-import GradientButton from "./GradientButton";
+"use client";
+
+import GradientButton from "@components/Reusable/GradientButton";
 
 const Landing = () => {
   return (
@@ -6,7 +8,9 @@ const Landing = () => {
       <div className="text-4xl w-fit lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent z-20 leading-relaxed px-7 py-2 text-center">
         Simplicity For Incredible Journeys
       </div>
-      <GradientButton>Get Started</GradientButton>
+      <GradientButton onClick={() => console.log("clicked")}>
+        Get Started
+      </GradientButton>
     </div>
   );
 };

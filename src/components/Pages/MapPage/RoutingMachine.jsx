@@ -2,8 +2,8 @@ import L from "leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
 import "leaflet/dist/leaflet.css";
-import "../styles/Map.css";
-import JSONdata from "../assets/example.json";
+import "@styles/Map.css";
+import JSONdata from "@assets/example.json";
 
 const createRoutineMachineLayer = (props) => {
   const data = () => JSON.parse(JSON.stringify(JSONdata));

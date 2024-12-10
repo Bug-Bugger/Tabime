@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
-import "../styles/Map.css";
+import "@styles/Map.css";
 import "leaflet/dist/leaflet.css";
-import JSONdata from "../assets/example.json";
+import JSONdata from "@assets/example.json";
 
 import RoutingMachine from "./RoutingMachine";
 

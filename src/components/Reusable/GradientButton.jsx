@@ -1,12 +1,8 @@
+"use client";
+
 import PropTypes from "prop-types";
 
-const GradientButton = ({
-  children,
-  onClick = () => {
-    console.log("Onclick not implemented");
-  },
-  className = "",
-}) => {
+const GradientButton = ({ children, className = "", onClick }) => {
   return (
     <button
       onClick={onClick}
@@ -33,7 +29,7 @@ const GradientButton = ({
 
 GradientButton.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
 };
 
