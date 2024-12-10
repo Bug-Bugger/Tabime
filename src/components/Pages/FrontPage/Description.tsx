@@ -1,60 +1,81 @@
-import map from "../assets/japan.svg";
-import Waypoint from "../assets/waypoint.jsx";
-import Pointer from "../assets/pointer.jsx";
-import wand from "../assets/wand.svg";
+"use client";
+
+import map from "@assets/japan.svg";
+import Waypoint from "@assets/waypoint";
+import Pointer from "@assets/pointer";
+import wand from "@assets/wand.svg";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Image from "next/image";
+
 gsap.registerPlugin(ScrollTrigger);
 
-const Description = () => {
-  const containerRef = useRef(null);
+interface Refs {
+  current: HTMLElement | null;
+}
 
-  const pointerRef = useRef(null);
-  const collabPointerRef = useRef(null);
-  const trivialPathRef = useRef([]);
-  const trivialPathSvgRef = useRef(null);
-  const wandRef = useRef(null);
-  const optPathRef = useRef([]);
+const Description: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const textRef = useRef([]);
+  const pointerRef = useRef<SVGSVGElement>(null);
+  const collabPointerRef = useRef<SVGSVGElement>(null);
+  const trivialPathRef = useRef<(SVGPathElement | null)[]>([]);
+  const trivialPathSvgRef = useRef<SVGSVGElement>(null);
+  const wandRef = useRef<HTMLImageElement>(null);
+  const optPathRef = useRef<SVGSVGElement | null>(null);
 
-  const hokkaidoRef = useRef(null);
-  const suzumeRef = useRef(null);
-  const tokyoRef = useRef(null);
-  const spRef = useRef(null);
+  const textRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  const hokkaidoRef = useRef<SVGSVGElement>(null);
+  const suzumeRef = useRef<SVGSVGElement>(null);
+  const tokyoRef = useRef<SVGSVGElement>(null);
+  const spRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({
-      defaults: { ease: "power2.out" },
+      defaults: { ease: "power2.inOut" },
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=6000 bottom",
+        end: "+=6500 bottom",
         scrub: 2,
         pin: true,
-        ease: "power1.inOut",
       },
     });
 
     // It seems that gsap transformOrigin is not
     // working well with translating the element
     // Thus this offset function is used to calculate
-    const offset = (top, left) => ({
+    interface Offset {
+      top: string;
+      left: string;
+    }
+
+    const offset = (top: number, left: number): Offset => ({
       top: `${top + 6}%`,
       left: `${left - 2}%`,
     });
 
     // The reveal segment by legnth require calculation of the path
     // Thus this is the function for it
-    function revealSegmentByLength(path) {
-      const length = path.getTotalLength();
-      const svg = trivialPathSvgRef.current;
+    interface PathStrokeDash {
+      strokeDasharray: number;
+      strokeDashoffset: number;
+    }
 
-      const scale = svg.clientWidth / svg.viewBox.baseVal.width;
+    function revealSegmentByLength(
+      path: SVGPathElement | null
+    ): PathStrokeDash {
+      const length: number = path?.getTotalLength() ?? 0;
+      const svg: SVGSVGElement | null = trivialPathSvgRef.current;
 
-      const trueLength = length * scale;
+      const scale: number = svg
+        ? svg.clientWidth / svg.viewBox.baseVal.width
+        : 1;
+
+      const trueLength: number = length * scale;
       return {
         strokeDasharray: trueLength,
         strokeDashoffset: trueLength,
@@ -62,31 +83,15 @@ const Description = () => {
     }
 
     tl.set(collabPointerRef.current, { opacity: 0 })
-      .fromTo(
-        pointerRef.current,
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          ...offset(10, 78),
-          duration: 0.5,
-        }
-      )
-      .fromTo(
-        textRef.current[0],
-        { opacity: 0, y: "30%" },
-        { opacity: 1, y: "0", duration: 1 },
-        "<"
-      )
+      .to(pointerRef.current, {
+        opacity: 1,
+        ...offset(10, 78),
+        duration: 0.5,
+      })
+      .to(textRef.current[0], { opacity: 1, y: "0", duration: 1 }, "<")
       .to(pointerRef.current, { scale: 0.85, duration: 0.5 })
       .to(pointerRef.current, { scale: 1, duration: 0.5 })
-      .fromTo(
-        hokkaidoRef.current,
-        { opacity: 0, scale: 0.25, transformOrigin: "bottom" },
-        { opacity: 1, scale: 1, duration: 0.25 },
-        "<"
-      )
+      .to(hokkaidoRef.current, { opacity: 1, scale: 1, duration: 0.25 }, "<")
       .to(
         pointerRef.current,
         {
@@ -97,12 +102,7 @@ const Description = () => {
       )
       .to(pointerRef.current, { scale: 0.85, duration: 0.5 })
       .to(pointerRef.current, { scale: 1, duration: 0.5 })
-      .fromTo(
-        suzumeRef.current,
-        { opacity: 0, scale: 0.25, transformOrigin: "bottom" },
-        { opacity: 1, scale: 1, duration: 0.25 },
-        "<"
-      )
+      .to(suzumeRef.current, { opacity: 1, scale: 1, duration: 0.25 }, "<")
       .to(textRef.current[0], { opacity: 0, duration: 0.5 }, "<")
       .set(collabPointerRef.current, { opacity: 0 })
       .fromTo(
@@ -110,42 +110,21 @@ const Description = () => {
         { opacity: 0.2, ...offset(40, 20) },
         { opacity: 1, ...offset(63, 61), duration: 3, ease: "power3.out" }
       )
-      .fromTo(
-        textRef.current[1],
-        { opacity: 0, y: "30%" },
-        { opacity: 1, y: "0", duration: 1 },
-        "<"
-      )
+      .to(textRef.current[1], { opacity: 1, y: "0", duration: 1 }, "<")
       .to(collabPointerRef.current, { scale: 0.85, duration: 0.5 })
       .to(collabPointerRef.current, { scale: 1, duration: 0.5 })
-      .fromTo(
-        tokyoRef.current,
-        { opacity: 0, scale: 0.25, transformOrigin: "bottom" },
-        { opacity: 1, scale: 1, duration: 0.25 },
-        "<"
-      )
+      .to(tokyoRef.current, { opacity: 1, scale: 1, duration: 0.25 }, "<")
       .to(pointerRef.current, { ...offset(71, 30.5), duration: 1 }, "<")
       .to(pointerRef.current, { scale: 0.85, duration: 0.5 })
       .to(pointerRef.current, { scale: 1, duration: 0.5 })
-      .fromTo(
-        spRef.current,
-        { opacity: 0, scale: 0.25, transformOrigin: "bottom" },
-        { opacity: 1, scale: 1, duration: 0.25 },
-        "<"
-      )
+      .to(spRef.current, { opacity: 1, scale: 1, duration: 0.25 }, "<")
       .to(textRef.current[1], { opacity: 0, duration: 0.5 }, "<")
-
       .fromTo(
         trivialPathRef.current[0],
         { ...revealSegmentByLength(trivialPathRef.current[0]) },
         { strokeDashoffset: 0, duration: 2, delay: 0.02 }
       )
-      .fromTo(
-        textRef.current[2],
-        { opacity: 0, y: "30%" },
-        { opacity: 1, y: "0", duration: 1 },
-        "<"
-      )
+      .to(textRef.current[2], { opacity: 1, y: "0", duration: 1 }, "<")
       .fromTo(
         trivialPathRef.current[1],
         { ...revealSegmentByLength(trivialPathRef.current[1]) },
@@ -157,11 +136,7 @@ const Description = () => {
         { strokeDashoffset: 0, duration: 1 }
       )
       .to(textRef.current[2], { opacity: 0, duration: 0.5 }, "<")
-      .fromTo(
-        textRef.current[3],
-        { opacity: 0, y: "30%" },
-        { opacity: 1, y: "0", duration: 1 }
-      )
+      .to(textRef.current[3], { opacity: 1, y: "0", duration: 1 })
       .fromTo(
         wandRef.current,
         { opacity: 0, ...offset(45, 35) },
@@ -173,12 +148,7 @@ const Description = () => {
       .to(pointerRef.current, { opacity: 0, duration: 0.5 }, "<")
       .to(collabPointerRef.current, { opacity: 0, duration: 0.5 }, "<")
       .to(wandRef.current, { opacity: 0, duration: 0.5 })
-      .fromTo(
-        optPathRef.current,
-        { opacity: 0, y: "30%" },
-        { opacity: 1, y: 0, duration: 0.5 },
-        "<"
-      );
+      .to(optPathRef.current, { opacity: 1, y: 0, duration: 0.5 }, "<");
 
     return () => {
       tl.current?.kill();
@@ -194,30 +164,30 @@ const Description = () => {
       <div className="relative w-[650px] max-w-full">
         <div
           className="absolute 
-        lg:text-5xl lg:left-[-50%] lg:w-[90%] lg:top-[30%] lg:leading-tight
+        lg:text-5xl lg:left-[-35%] lg:w-[90%] lg:top-[30%] lg:leading-tight lg:max-w-[50%] lg:text-center
         text-pretty text-2xl top-[20%] left-[15%] w-[35%] text-center font-semibold"
         >
           <div className="relative">
             <div
-              className="absolute top-0 left-0 w-full"
+              className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
               ref={(el) => (textRef.current[0] = el)}
             >
               Add places from guides with 1 click
             </div>
             <div
-              className="absolute top-0 left-0 w-full"
+              className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
               ref={(el) => (textRef.current[1] = el)}
             >
               Seemless Collaboration with friends
             </div>
             <div
-              className="absolute top-0 left-0 w-full"
+              className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
               ref={(el) => (textRef.current[2] = el)}
             >
               Chaos in your travel plans?
             </div>
             <div
-              className="absolute top-0 left-0 w-full"
+              className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
               ref={(el) => (textRef.current[3] = el)}
             >
               Fixed with one tap!
@@ -226,20 +196,20 @@ const Description = () => {
         </div>
         <div className="relative w-[650px] max-w-full p-8">
           <Pointer
-            className="absolute top-[-10%] left-[50%] w-[5%] h-auto z-40"
+            className="absolute top-[-10%] left-[50%] w-[5%] h-auto z-40 opacity-0"
             color="#FFFFFF"
             ref={pointerRef}
           />
           <Pointer
-            className="absolute top-[40%] left-[30%] w-[5%] h-auto z-40"
+            className="absolute top-[40%] left-[30%] w-[5%] h-auto z-40 opacity-0"
             border="#0066FF"
             color="#0066FF"
             ref={collabPointerRef}
           />
-          <img
+          <Image
             src={wand}
             alt="Wand"
-            className="absolute top-[45%] left-[35%] w-[6%] h-auto z-40"
+            className="absolute top-[45%] left-[35%] w-[6%] h-auto z-40 opacity-0"
             ref={wandRef}
           />
           <svg
@@ -286,8 +256,9 @@ const Description = () => {
           </svg>
 
           <svg
-            className="absolute top-0 left-0 w-full h-full z-5"
+            className="absolute top-0 left-0 w-full h-full z-5 opacity-0 transform translate-y-[30%]"
             viewBox="0 0 100 100"
+            ref={optPathRef}
           >
             <defs>
               <linearGradient
@@ -302,7 +273,6 @@ const Description = () => {
               </linearGradient>
             </defs>
             <path
-              ref={(el) => (optPathRef.current[0] = el)}
               d="M 81 13.5 L 63.5 70.5"
               stroke="url(#optpathGradient)"
               strokeWidth="9"
@@ -310,7 +280,6 @@ const Description = () => {
               vectorEffect="non-scaling-stroke"
             />
             <path
-              ref={(el) => (optPathRef.current[1] = el)}
               d="M 63.5 70.5 L 33 79.5"
               stroke="url(#optpathGradient)"
               strokeWidth="9"
@@ -318,7 +287,6 @@ const Description = () => {
               vectorEffect="non-scaling-stroke"
             />
             <path
-              ref={(el) => (optPathRef.current[2] = el)}
               d="M 33 79.5 L 19 90.5"
               stroke="url(#optpathGradient)"
               strokeWidth="9"
@@ -327,26 +295,26 @@ const Description = () => {
             />
           </svg>
           <Waypoint
-            className="absolute top-[10%] left-[78%] w-[5%] h-auto"
+            className="absolute top-[10%] left-[78%] w-[5%] h-auto opacity-0 scale-[.25] origin-bottom"
             color="#ecfffd"
             ref={hokkaidoRef}
           />
           <Waypoint
-            className="absolute top-[82%] left-[16%] w-[5%] h-auto"
+            className="absolute top-[82%] left-[16%] w-[5%] h-auto opacity-0 scale-[.25] origin-bottom"
             color="#85c4e0"
             ref={suzumeRef}
           />
           <Waypoint
-            className="absolute top-[63%] left-[61%] w-[5%] h-auto"
+            className="absolute top-[63%] left-[61%] w-[5%] h-auto opacity-0 scale-[.25] origin-bottom"
             color="#9900ff"
             ref={tokyoRef}
           />
           <Waypoint
-            className="absolute top-[71%] left-[30.5%] w-[5%] h-auto"
+            className="absolute top-[71%] left-[30.5%] w-[5%] h-auto opacity-0 scale-[.25] origin-bottom"
             color="#47adfa"
             ref={spRef}
           />
-          <img src={map} alt="Map" className="w-full h-auto" />
+          <Image src={map} alt="Map" className="w-full h-auto" />
         </div>
       </div>
     </div>

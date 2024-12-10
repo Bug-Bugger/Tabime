@@ -1,10 +1,18 @@
-import { useRef, useEffect, useCallback, useState } from "react";
+"use client";
+
+import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 
-const MeshGradientBackground = () => {
-  const bg = useRef(null);
-  const animationRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(true);
+const MeshGradientBackground: React.FC = () => {
+  const bg = useRef<HTMLDivElement | null>(null);
+  const animationRef = useRef<gsap.core.Tween | null>(null);
+
+  const initialGradient = `
+      radial-gradient(at 50% 50%, hsla(200, 70%, 70%, 1) 0px, transparent 70%),
+      radial-gradient(at 30% 30%, hsla(220, 80%, 80%, 1) 0px, transparent 70%),
+      radial-gradient(at 70% 70%, hsla(190, 65%, 75%, 1) 0px, transparent 70%),
+      radial-gradient(at 90% 20%, hsla(240, 50%, 60%, 1) 0px, transparent 70%)
+    `;
 
   const generateRandomGradient = () => `
       radial-gradient(at ${gsap.utils.random(10, 90)}% ${gsap.utils.random(
@@ -51,23 +59,15 @@ const MeshGradientBackground = () => {
   }, []);
 
   useEffect(() => {
-    gsap.set(bg.current, {
-      backgroundColor: "hsla(228,39%,82%,1)",
-      backgroundImage: generateRandomGradient(),
-    });
-    randomMovement();
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 } // Trigger when 10% of the component is visible
-    );
-
-    observer.observe(bg.current);
+    if (bg.current) {
+      gsap.set(bg.current, {
+        backgroundColor: "hsla(228,39%,82%,1)",
+        backgroundImage: initialGradient,
+      });
+      randomMovement();
+    }
 
     return () => {
-      observer.disconnect();
       if (animationRef.current) {
         animationRef.current.kill();
         animationRef.current = null;
@@ -75,21 +75,13 @@ const MeshGradientBackground = () => {
     };
   }, [randomMovement]);
 
-  useEffect(() => {
-    // Pause or resume animation based on visibility
-    if (animationRef.current) {
-      if (isVisible) {
-        animationRef.current.resume();
-      } else {
-        animationRef.current.pause();
-      }
-    }
-  }, [isVisible]);
-
   return (
     <div
       ref={bg}
       className="absolute z-0 top-0 left-0 right-0 w-full h-screen gradient"
+      style={{
+        backgroundImage: initialGradient,
+      }}
     ></div>
   );
 };
