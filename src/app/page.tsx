@@ -1,7 +1,7 @@
 "use client";
 
-import Description from "@components/Pages/Frontpage/Description";
-import Landing from "@components/Pages/Frontpage/Landing";
+import Description from "@components/Pages/FrontPage/Description";
+import Landing from "@components/Pages/FrontPage/Landing";
 import MeshGradientBackground from "@components/Reusable/MeshGradientBackground";
 
 import tabimeicon from "@assets/tabime.svg";

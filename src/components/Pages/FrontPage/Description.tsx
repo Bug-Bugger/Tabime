@@ -1,73 +1,81 @@
 "use client";
 
 import map from "@assets/japan.svg";
-import Waypoint from "@assets/waypoint.jsx";
-import Pointer from "@assets/pointer.jsx";
+import Waypoint from "@assets/waypoint";
+import Pointer from "@assets/pointer";
 import wand from "@assets/wand.svg";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Image from "next/image";
-import dynamic from "next/dynamic";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Description = () => {
-  const containerRef = useRef(null);
+interface Refs {
+  current: HTMLElement | null;
+}
 
-  const pointerRef = useRef(null);
-  const collabPointerRef = useRef(null);
-  const trivialPathRef = useRef([]);
-  const trivialPathSvgRef = useRef(null);
-  const wandRef = useRef(null);
-  const optPathRef = useRef(null);
+const Description: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const textRef = useRef([]);
+  const pointerRef = useRef<SVGSVGElement>(null);
+  const collabPointerRef = useRef<SVGSVGElement>(null);
+  const trivialPathRef = useRef<(SVGPathElement | null)[]>([]);
+  const trivialPathSvgRef = useRef<SVGSVGElement>(null);
+  const wandRef = useRef<HTMLImageElement>(null);
+  const optPathRef = useRef<SVGSVGElement | null>(null);
 
-  const hokkaidoRef = useRef(null);
-  const suzumeRef = useRef(null);
-  const tokyoRef = useRef(null);
-  const spRef = useRef(null);
-  const isClient = useRef(false);
+  const textRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  const hokkaidoRef = useRef<SVGSVGElement>(null);
+  const suzumeRef = useRef<SVGSVGElement>(null);
+  const tokyoRef = useRef<SVGSVGElement>(null);
+  const spRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    isClient.current = true;
-  }, []);
-
-  useEffect(() => {
-    if (!isClient.current) {
-      return;
-    }
     const tl = gsap.timeline({
-      defaults: { ease: "power2.out" },
+      defaults: { ease: "power2.inOut" },
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=6000 bottom",
+        end: "+=6500 bottom",
         scrub: 2,
         pin: true,
-        ease: "power1.inOut",
       },
     });
 
     // It seems that gsap transformOrigin is not
     // working well with translating the element
     // Thus this offset function is used to calculate
-    const offset = (top, left) => ({
+    interface Offset {
+      top: string;
+      left: string;
+    }
+
+    const offset = (top: number, left: number): Offset => ({
       top: `${top + 6}%`,
       left: `${left - 2}%`,
     });
 
     // The reveal segment by legnth require calculation of the path
     // Thus this is the function for it
-    function revealSegmentByLength(path) {
-      const length = path.getTotalLength();
-      const svg = trivialPathSvgRef.current;
+    interface PathStrokeDash {
+      strokeDasharray: number;
+      strokeDashoffset: number;
+    }
 
-      const scale = svg.clientWidth / svg.viewBox.baseVal.width;
+    function revealSegmentByLength(
+      path: SVGPathElement | null
+    ): PathStrokeDash {
+      const length: number = path?.getTotalLength() ?? 0;
+      const svg: SVGSVGElement | null = trivialPathSvgRef.current;
 
-      const trueLength = length * scale;
+      const scale: number = svg
+        ? svg.clientWidth / svg.viewBox.baseVal.width
+        : 1;
+
+      const trueLength: number = length * scale;
       return {
         strokeDasharray: trueLength,
         strokeDashoffset: trueLength,
@@ -94,12 +102,7 @@ const Description = () => {
       )
       .to(pointerRef.current, { scale: 0.85, duration: 0.5 })
       .to(pointerRef.current, { scale: 1, duration: 0.5 })
-      .fromTo(
-        suzumeRef.current,
-        { opacity: 0, scale: 0.25, transformOrigin: "bottom" },
-        { opacity: 1, scale: 1, duration: 0.25 },
-        "<"
-      )
+      .to(suzumeRef.current, { opacity: 1, scale: 1, duration: 0.25 }, "<")
       .to(textRef.current[0], { opacity: 0, duration: 0.5 }, "<")
       .set(collabPointerRef.current, { opacity: 0 })
       .fromTo(
@@ -161,12 +164,12 @@ const Description = () => {
       <div className="relative w-[650px] max-w-full">
         <div
           className="absolute 
-        lg:text-5xl lg:left-[-50%] lg:w-[90%] lg:top-[30%] lg:leading-tight
+        lg:text-5xl lg:left-[-35%] lg:w-[90%] lg:top-[30%] lg:leading-tight lg:max-w-[50%] lg:text-center
         text-pretty text-2xl top-[20%] left-[15%] w-[35%] text-center font-semibold"
         >
           <div className="relative">
             <div
-              className="absolute top-0 left-0 w-full"
+              className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
               ref={(el) => (textRef.current[0] = el)}
             >
               Add places from guides with 1 click

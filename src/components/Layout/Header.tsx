@@ -1,7 +1,7 @@
 import logo from "@assets/tabime.svg";
 import Image from "next/image";
 
-export default function Header() {
+const Header: React.FC = () => {
   return (
     <h1 className="h-auto fixed w-full z-40">
       <div className="p-6 mx-auto flex items-center">
@@ -14,4 +14,6 @@ export default function Header() {
       </div>
     </h1>
   );
-}
+};
+
+export default Header;

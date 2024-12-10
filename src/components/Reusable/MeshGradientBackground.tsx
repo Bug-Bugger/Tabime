@@ -3,9 +3,9 @@
 import { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 
-const MeshGradientBackground = () => {
-  const bg = useRef(null);
-  const animationRef = useRef(null);
+const MeshGradientBackground: React.FC = () => {
+  const bg = useRef<HTMLDivElement | null>(null);
+  const animationRef = useRef<gsap.core.Tween | null>(null);
 
   const initialGradient = `
       radial-gradient(at 50% 50%, hsla(200, 70%, 70%, 1) 0px, transparent 70%),

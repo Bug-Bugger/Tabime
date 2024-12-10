@@ -1,8 +1,16 @@
 "use client";
 
-import PropTypes from "prop-types";
+interface GradientButtonProps {
+  children: React.ReactNode;
+  className?: string;
+  onClick: () => void;
+}
 
-const GradientButton = ({ children, className = "", onClick }) => {
+const GradientButton: React.FC<GradientButtonProps> = ({
+  children,
+  className = "",
+  onClick,
+}) => {
   return (
     <button
       onClick={onClick}
@@ -25,12 +33,6 @@ const GradientButton = ({ children, className = "", onClick }) => {
       <span className="relative z-10">{children}</span>
     </button>
   );
-};
-
-GradientButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
-  className: PropTypes.string,
 };
 
 export default GradientButton;
