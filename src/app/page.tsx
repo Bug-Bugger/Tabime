@@ -10,14 +10,14 @@ import Head from "next/head";
 export default function Home() {
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>Tabime</title>
         <link rel="icon" href={tabimeicon} />
-      </Head> */}
+      </Head>
       <div className="w-full overflow-hidden">
-        {/* <Landing /> */}
-        {/* <MeshGradientBackground />
-        <Description /> */}
+        <Landing />
+        <MeshGradientBackground />
+        <Description />
       </div>
     </>
   );
