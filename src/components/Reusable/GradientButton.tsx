@@ -1,11 +1,5 @@
 "use client";
 
-interface GradientButtonProps {
-  children: React.ReactNode;
-  className?: string;
-  onClick: () => void;
-}
-
 const GradientButton: React.FC<GradientButtonProps> = ({
   children,
   className = "",
