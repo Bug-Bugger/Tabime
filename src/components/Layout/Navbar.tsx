@@ -9,7 +9,7 @@ const Header: React.FC = () => {
           <Image
             src={logo}
             alt="Tabime Logo"
-            className="w-10 h-10 hover:rotate-180 transition-transform duration-500"
+            className="w-10 h-10 hover:rotate-180 ease-in-out transition-all duration-500"
           />
           <p className="text-2xl font-sans font-semibold ml-3 text-gray-800">
             Tabime
