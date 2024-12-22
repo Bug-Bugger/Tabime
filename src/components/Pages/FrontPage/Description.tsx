@@ -39,9 +39,16 @@ const Description: React.FC = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=6500 bottom",
+        end: "+=3600 bottom",
         scrub: 2,
         pin: true,
+        snap: {
+          snapTo: "labelsDirectional",
+          duration: 0.4,
+          delay: 0.1,
+          ease: "power1.inOut",
+          inertia: false,
+        },
       },
     });
 
@@ -103,7 +110,8 @@ const Description: React.FC = () => {
       .to(pointerRef.current, { scale: 0.85, duration: 0.5 })
       .to(pointerRef.current, { scale: 1, duration: 0.5 })
       .to(suzumeRef.current, { opacity: 1, scale: 1, duration: 0.25 }, "<")
-      .to(textRef.current[0], { opacity: 0, duration: 0.5 }, "<")
+      .addLabel("Add Place End")
+      .to(textRef.current[0], { opacity: 0, duration: 0.5 })
       .set(collabPointerRef.current, { opacity: 0 })
       .fromTo(
         collabPointerRef.current,
@@ -118,7 +126,8 @@ const Description: React.FC = () => {
       .to(pointerRef.current, { scale: 0.85, duration: 0.5 })
       .to(pointerRef.current, { scale: 1, duration: 0.5 })
       .to(spRef.current, { opacity: 1, scale: 1, duration: 0.25 }, "<")
-      .to(textRef.current[1], { opacity: 0, duration: 0.5 }, "<")
+      .addLabel("Collab End")
+      .to(textRef.current[1], { opacity: 0, duration: 0.5 })
       .fromTo(
         trivialPathRef.current[0],
         { ...revealSegmentByLength(trivialPathRef.current[0]) },
@@ -130,12 +139,14 @@ const Description: React.FC = () => {
         { ...revealSegmentByLength(trivialPathRef.current[1]) },
         { strokeDashoffset: 0, duration: 1 }
       )
+
       .fromTo(
         trivialPathRef.current[2],
         { ...revealSegmentByLength(trivialPathRef.current[2]) },
         { strokeDashoffset: 0, duration: 1 }
       )
-      .to(textRef.current[2], { opacity: 0, duration: 0.5 }, "<")
+      .addLabel("Add Path End")
+      .to(textRef.current[2], { opacity: 0, duration: 0.5 })
       .to(textRef.current[3], { opacity: 1, y: "0", duration: 1 })
       .fromTo(
         wandRef.current,
@@ -148,7 +159,8 @@ const Description: React.FC = () => {
       .to(pointerRef.current, { opacity: 0, duration: 0.5 }, "<")
       .to(collabPointerRef.current, { opacity: 0, duration: 0.5 }, "<")
       .to(wandRef.current, { opacity: 0, duration: 0.5 })
-      .to(optPathRef.current, { opacity: 1, y: 0, duration: 0.5 }, "<");
+      .to(optPathRef.current, { opacity: 1, y: 0, duration: 0.5 }, "<")
+      .addLabel("Finished");
 
     return () => {
       tl.current?.kill();
