@@ -17,37 +17,37 @@ const Header: React.FC = () => {
         </div>
 
         <nav>
-          <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
+          <ul className="flex space-x-8 text-gray-700 font-medium mr-[4.5rem]">
             <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            focus:text-[#2563eb] after:content-[''] after:bg-blue-500 
+            after:content-[''] after:bg-blue-500 
             after:absolute after:bottom-0 after:left-0 after:h-[2px] 
             after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb] focus:after:bg-[#2563eb] 
-            hover:after:w-full focus:after:w-full">
+            hover:after:bg-[#2563eb]
+            hover:after:w-full">
               PlaceHolder
             </li>
             <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            focus:text-[#2563eb] after:content-[''] after:bg-blue-500 
+            after:content-[''] after:bg-blue-500 
             after:absolute after:bottom-0 after:left-0 after:h-[2px] 
             after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb] focus:after:bg-[#2563eb] 
-            hover:after:w-full focus:after:w-full">
+            hover:after:bg-[#2563eb]
+            hover:after:w-full">
               PlaceHolder
             </li>
             <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            focus:text-[#2563eb] after:content-[''] after:bg-blue-500 
+            after:content-[''] after:bg-blue-500 
             after:absolute after:bottom-0 after:left-0 after:h-[2px] 
             after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb] focus:after:bg-[#2563eb] 
-            hover:after:w-full focus:after:w-full">
+            hover:after:bg-[#2563eb]
+            hover:after:w-full">
               PlaceHolder
             </li>
             <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            focus:text-[#2563eb] after:content-[''] after:bg-blue-500 
+            after:content-[''] after:bg-blue-500 
             after:absolute after:bottom-0 after:left-0 after:h-[2px] 
             after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb] focus:after:bg-[#2563eb] 
-            hover:after:w-full focus:after:w-full">
+            hover:after:bg-[#2563eb]
+            hover:after:w-full">
               PlaceHolder
             </li>
           </ul>
