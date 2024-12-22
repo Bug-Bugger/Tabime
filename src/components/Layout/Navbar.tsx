@@ -1,9 +1,31 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
 import logo from "@assets/tabime.svg";
 import Image from "next/image";
 
-const Header: React.FC = () => {
+const NavBar: React.FC = () => {
+  const [isSticky, setSticky] = useState(false);
+
+  const navItems = ["PlaceHolder", "PlaceHolder", "PlaceHolder", "PlaceHolder"];
+
+  const handleScroll = () => {
+    setSticky(window.scrollY > 60);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="fixed w-full z-40 bg-slate-300 bg-opacity-50 backdrop-blur-lg shadow-md">
+    <div
+      className={`fixed w-full z-40 transition-all duration-500 ease-in-out ${
+        isSticky ? "bg-slate-300 bg-opacity-50 backdrop-blur-lg shadow-md" : "bg-transparent backdrop-blur-0"
+      }`}
+    >
       <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
         <div className="flex items-center">
           <Image
@@ -18,38 +40,19 @@ const Header: React.FC = () => {
 
         <nav>
           <ul className="flex space-x-8 text-gray-700 font-medium mr-[4.5rem]">
-            <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            after:content-[''] after:bg-blue-500 
-            after:absolute after:bottom-0 after:left-0 after:h-[2px] 
-            after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb]
-            hover:after:w-full">
-              PlaceHolder
-            </li>
-            <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            after:content-[''] after:bg-blue-500 
-            after:absolute after:bottom-0 after:left-0 after:h-[2px] 
-            after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb]
-            hover:after:w-full">
-              PlaceHolder
-            </li>
-            <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            after:content-[''] after:bg-blue-500 
-            after:absolute after:bottom-0 after:left-0 after:h-[2px] 
-            after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb]
-            hover:after:w-full">
-              PlaceHolder
-            </li>
-            <li className="relative hover:text-[#2563eb] cursor-pointer transition-colors duration-300
-            after:content-[''] after:bg-blue-500 
-            after:absolute after:bottom-0 after:left-0 after:h-[2px] 
-            after:w-0 after:transition-all after:duration-200 
-            hover:after:bg-[#2563eb]
-            hover:after:w-full">
-              PlaceHolder
-            </li>
+          {navItems.map((item, index) => (
+              <li
+                key={index}
+                className="relative cursor-pointer transition-colors duration-300 hover:text-[#2563eb] group"
+              >
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className="group-hover:after:w-full after:content-[''] after:bg-[#2563eb] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300"
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
 
@@ -61,4 +64,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default NavBar;
