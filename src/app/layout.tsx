@@ -17,6 +17,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Tabime",
   description: "Simplicity For Incredible Journeys",
+  icons: {
+    icon: "./assets/tabime.svg"
+  }
 };
 
 export default function RootLayout({
