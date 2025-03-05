@@ -12,10 +12,6 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Refs {
-  current: HTMLElement | null;
-}
-
 const Description: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
