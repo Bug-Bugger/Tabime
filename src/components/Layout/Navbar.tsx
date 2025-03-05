@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import logo from "@assets/tabime.svg";
+import logo from "@assets/logo.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 const NavBar: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
 
-  const navItems = ["PlaceHolder", "PlaceHolder", "PlaceHolder", "PlaceHolder"];
+  const navItems = ["PlaceHolder", "Map", "PlaceHolder", "PlaceHolder"];
 
   const handleScroll = () => {
     setSticky(window.scrollY > 60);
@@ -22,12 +23,14 @@ const NavBar: React.FC = () => {
 
   return (
     <div
-      className={`fixed w-full z-40 transition-all duration-500 ease-in-out ${
-        isSticky ? "bg-slate-300 bg-opacity-50 backdrop-blur-lg shadow-md" : "bg-transparent backdrop-blur-0"
+      className={`fixed w-full z-40 transition-all duration-500 ease-in-out font-sans ${
+        isSticky
+          ? "bg-[#c1c8e4] bg-opacity-50 backdrop-blur-lg shadow-md"
+          : "bg-transparent backdrop-blur-0"
       }`}
     >
       <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-        <div className="flex items-center">
+        <Link href="/" className="flex items-center cursor-pointer">
           <Image
             src={logo}
             alt="Tabime Logo"
@@ -36,17 +39,17 @@ const NavBar: React.FC = () => {
           <p className="text-2xl font-sans font-semibold ml-3 text-gray-800">
             Tabime
           </p>
-        </div>
+        </Link>
 
         <nav>
           <ul className="flex space-x-8 text-gray-700 font-medium mr-[4.5rem]">
-          {navItems.map((item, index) => (
+            {navItems.map((item, index) => (
               <li
                 key={index}
                 className="relative cursor-pointer transition-colors duration-300 hover:text-[#2563eb] group"
               >
                 <a
-                  href={`#${item.toLowerCase()}`}
+                  href={`/${item.toLowerCase()}`}
                   className="group-hover:after:w-full after:content-[''] after:bg-[#2563eb] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300"
                 >
                   {item}
