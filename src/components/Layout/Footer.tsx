@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#8860d0] text-[#FFFFFF] pt-16 pb-8">
+    <footer className="bg-[#887fde] text-[#FFFFFF] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
@@ -18,11 +18,11 @@ export default function Footer() {
               </div>
               <span className="font-bold text-xl">Tabime</span>
             </div>
-            <p className="text-gray-300 mb-4">
+            <p className="text-[#E8E9F3] mb-4">
               Bringing anime fans to real-world locations from their favorite
               series.
             </p>
-            <div className="flex space-x-4 text-gray-300">
+            <div className="flex space-x-4 text-[#E8E9F3]">
               <a href="#" className="hover:text-white transition-colors">
                 <svg
                   className="h-6 w-6"
@@ -55,7 +55,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Features</h3>
-            <ul className="space-y-2 text-gray-300">
+            <ul className="space-y-2 text-[#E8E9F3]">
               <li>
                 <Link
                   href="/features/route-planning"
@@ -67,7 +67,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/features/real-time-collaboration"
-                  className=" hover:text-white transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Real-time Collaboration
                 </Link>
@@ -75,7 +75,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/features/recommendations"
-                  className="text-gray-200 hover:text-white transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Personalized Recommendations
                 </Link>
@@ -83,7 +83,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/features/mal-integration"
-                  className="text-gray-200 hover:text-white transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   MAL Integration
                 </Link>
@@ -93,7 +93,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2 text-gray-300">
+            <ul className="space-y-2 text-[#E8E9F3]">
               <li>
                 <Link
                   href="/blog"
@@ -131,7 +131,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-gray-300">
+            <ul className="space-y-2 text-[#E8E9F3]">
               <li>
                 <Link
                   href="/about"
