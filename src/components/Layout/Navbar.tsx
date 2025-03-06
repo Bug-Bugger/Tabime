@@ -1,33 +1,43 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import logo from "@assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 
 const NavBar: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = ["PlaceHolder", "Map", "PlaceHolder", "PlaceHolder"];
+  const navItems = ["Dashboard", "Map", "Routes", "Discover"];
 
   const handleScroll = () => {
     setSticky(window.scrollY > 60);
   };
 
+  const handleResize = () => {
+    if (window.innerWidth > 768) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <div
+    <nav
       className={`fixed w-full z-40 transition-all duration-500 ease-in-out font-sans ${
-        isSticky
-          ? "bg-[#c1c8e4] bg-opacity-50 backdrop-blur-lg shadow-md"
+        isSticky || mobileMenuOpen
+          ? "bg-[#c1c8e4] bg-opacity-50 backdrop-blur-lg"
           : "bg-transparent backdrop-blur-0"
-      }`}
+      } ${isSticky && !mobileMenuOpen ? "shadow-md" : ""}`}
     >
       <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
         <Link href="/" className="flex items-center cursor-pointer">
@@ -42,8 +52,9 @@ const NavBar: React.FC = () => {
           </p>
         </Link>
 
-        <nav>
-          <ul className="flex space-x-8 text-gray-700 font-medium mr-[4.5rem]">
+        {/* desktop navbar */}
+        <div className="hidden md:flex">
+          <ul className="flex justify-center items-center space-x-8 text-gray-700 font-medium mr-8">
             {navItems.map((item, index) => (
               <li
                 key={index}
@@ -58,13 +69,37 @@ const NavBar: React.FC = () => {
               </li>
             ))}
           </ul>
-        </nav>
 
-        <button className="px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300">
-          Login
+          <button className="px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300">
+            Login
+          </button>
+        </div>
+
+        {/* mobile navbar */}
+        <button
+          className="md:hidden text-white"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-    </div>
+      {mobileMenuOpen && (
+        <div className="top-[4.5rem] left-0 right-0 shadow-md p-4 rounded-lg">
+          <ul className="flex flex-col space-y-4 text-center font-sans text-blue-50 drop-shadow-md ">
+            {navItems.map((item, index) => (
+              <li key={index} className="cursor-pointer hover:text-blue-100">
+                <a href={`/${item.toLowerCase()}`}>{item}</a>
+              </li>
+            ))}
+          </ul>
+          <div className="flex justify-center mt-4">
+            <button className="px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300">
+              Login
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 
