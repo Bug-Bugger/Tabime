@@ -31,9 +31,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.ja",
-    "src/components/Reusable/GradientButton.jsx",
-    "src/components/Pages/FrontPage/Description.tsx",
-    "src/components/Reusable/MeshGradientBackground.tsx",
+    "src/components/reusable/GradientButton.jsx",
+    "src/components/pages/description.tsx",
+    "src/components/reusable/meshGradientBackground.tsx",
     "public/assets/pointer.tsx"
   ],
   "exclude": ["node_modules"]
