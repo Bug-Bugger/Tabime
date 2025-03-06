@@ -11,18 +11,14 @@ export default function Home() {
   return (
     <div className="w-full overflow-hidden">
       <div className="h-screen w-full font-sans flex flex-col items-center justify-center bg-transparent z-20 gap-8 overflow-hidden">
-        <div className="text-4xl w-fit lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent z-20 leading-relaxed px-7 py-2 text-center">
+        <div className="text-4xl w-fit lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text drop-shadow-sm text-transparent z-20 leading-relaxed px-7 py-2 text-center">
           Simplicity For Incredible Journeys
         </div>
-        <AnimatedButton onClick={getStarted}>
-          Get Started
-        </AnimatedButton>
+        <AnimatedButton onClick={getStarted}>Get Started</AnimatedButton>
       </div>
       <MeshGradientBackground />
       <Description />
-      <section
-        className="py-20 bg-gradient-to-r from-[#5680E9] to-[#8860D0] text-white text-center"
-      >
+      <section className="py-20 bg-gradient-to-r from-[#5680E9] to-[#8860D0] text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-6">
             Ready to Start Your Anime Adventure?
@@ -31,11 +27,7 @@ export default function Home() {
             Join Tabime today and transform your anime passion into
             unforgettable travel experiences.
           </p>
-          <AnimatedButton
-            onClick={getStarted}
-          >
-            Get Started Now
-          </AnimatedButton>
+          <AnimatedButton onClick={getStarted}>Get Started Now</AnimatedButton>
         </div>
       </section>
     </div>
