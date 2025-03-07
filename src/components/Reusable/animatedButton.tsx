@@ -26,7 +26,7 @@ const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
     };
 
     const baseGradient = `from-${baseColor}-${fullIntensity.base} to-${accentColor}-${fullIntensity.accent}`;
-    const hoverGradient = `from-${baseColor}-${fullIntensity.hoverBase} to-${accentColor}-${fullIntensity.hoverAccent}`;
+    const hoverGradient = `after:from-${baseColor}-${fullIntensity.hoverBase} after:to-${accentColor}-${fullIntensity.hoverAccent}`;
     const glowGradient = `before:from-transparent before:via-${baseColor}-${fullIntensity.glow} before:to-transparent`;
 
     return (
