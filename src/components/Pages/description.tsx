@@ -171,11 +171,11 @@ const Description: React.FC = () => {
     >
       <div className="relative w-[650px] max-w-full">
         <div
-          className="absolute 
+          className="absolute text-blue-400
         lg:text-5xl lg:left-[-35%] lg:w-[90%] lg:top-[30%] lg:leading-tight lg:max-w-[50%] lg:text-center
         text-pretty text-2xl top-[20%] left-[15%] w-[35%] text-center font-semibold font-sans"
         >
-          <div className="relative drop-shadow-md">
+          <div className="relative drop-shadow-sm">
             <div
               className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%] "
               ref={(el) => (textRef.current[0] = el)}
