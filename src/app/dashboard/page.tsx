@@ -1,5 +1,50 @@
-import { Card, CardHeader, CardContent, CardTitle } from "@components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardTitle,
+  CardDescription,
+} from "@components/ui/card";
+import { Badge } from "@components/ui/badge";
+import { Button } from "@components/ui/button";
 import { ClipboardList, MapPinCheck, Plane } from "lucide-react";
+
+const tempAnimeList = [
+  {
+    title: "Summer Pocket",
+    tags: ["Slice of Life", "Romance"],
+    locationCount: 12,
+  },
+  {
+    title: "Girls Band Cry",
+    tags: ["Music", "Drama"],
+    locationCount: 52,
+  },
+  {
+    title: "BanG Dream! It's MyGO!!!!!",
+    tags: ["Music", "Drama"],
+    locationCount: 30,
+  },
+];
+
+const tempTravelPlans = [
+  {
+    title: "Tokyo Anime Tour",
+    startDate: new Date("2022-10-10"),
+    endDate: new Date("2022-10-20"),
+    locationCount: 12,
+    animeCount: 5,
+    collaborators: 3,
+  },
+  {
+    title: "Kyoto Anime Tour",
+    startDate: new Date("2022-11-10"),
+    endDate: new Date("2022-11-20"),
+    locationCount: 43,
+    animeCount: 12,
+    collaborators: 1,
+  },
+];
 
 const Dashboard = () => {
   return (
@@ -77,11 +122,73 @@ const Dashboard = () => {
           <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-preset-slide-right">
             Anime Lists
           </h1>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-5">
+            {tempAnimeList.map((anime, index) => (
+              <Card key={index} className="w-full motion-preset-blur-up">
+                <CardContent className="p-5">
+                  <div className="w-full h-44 bg-blue-200 rounded-md">img</div>
+                </CardContent>
+                <CardHeader className="pt-0">
+                  <div className="flex flex-wrap ">
+                    {anime.tags.map((tag, index) => (
+                      <Badge
+                        key={index}
+                        className="mr-2 bg-blue-700 hover:bg-blue-800 select-none"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                  <CardTitle className="text-lg font-sans text-blue-500">
+                    {anime.title}
+                  </CardTitle>
+                  <CardDescription className="text-blue-400 mt-2">
+                    {anime.locationCount} locations available
+                  </CardDescription>
+                  <Button className="mt-4 bg-purple-500 hover:bg-purple-600">
+                    View
+                  </Button>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
         </div>
         <div className="my-6">
           <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-duration-1000 motion-preset-slide-right">
             Travel Plans
           </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5">
+            {tempTravelPlans.map((plan, index) => (
+              <Card key={index} className="w-full motion-preset-blur-up">
+                <CardHeader className=" bg-blue-600">
+                  <CardTitle className="text-blue-50 text-xl">
+                    {plan.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-5 pt-3">
+                  <CardDescription className="text-blue-400 py-1">
+                    {plan.startDate.toDateString()} -{" "}
+                    {plan.endDate.toDateString()}
+                  </CardDescription>
+                  <CardDescription className="text-blue-400 py-1">
+                    {plan.locationCount} locations · {plan.animeCount} anime
+                    series
+                  </CardDescription>
+                  <CardDescription className="text-blue-400 py-1">
+                    {plan.collaborators} collaborators
+                  </CardDescription>
+                  <CardDescription className="flex text-blue-400 py-4 gap-1">
+                    <Button className="bg-blue-500 hover:bg-blue-600">
+                      View
+                    </Button>
+                    <Button className="bg-blue-500 hover:bg-blue-600 ml-2">
+                      Edit
+                    </Button>
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>
