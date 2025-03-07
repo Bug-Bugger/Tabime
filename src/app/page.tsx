@@ -11,10 +11,19 @@ export default function Home() {
   return (
     <div className="w-full overflow-hidden">
       <div className="h-screen w-full font-sans flex flex-col items-center justify-center bg-transparent z-20 gap-8 overflow-hidden">
-        <div className="text-4xl w-fit lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text drop-shadow-sm text-transparent z-20 leading-relaxed px-7 py-2 text-center">
+        <div
+          className="text-4xl w-fit lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text drop-shadow-sm text-transparent z-20 leading-relaxed 
+          px-7 py-2 text-center
+          motion-opacity-in-0 motion-scale-in-90 motion-blur-in-md motion-duration-500"
+        >
           Simplicity For Incredible Journeys
         </div>
-        <AnimatedButton onClick={getStarted}>Get Started</AnimatedButton>
+        <AnimatedButton
+          onClick={getStarted}
+          className="motion-scale-in-75 motion-blur-in-md motion-duration-500"
+        >
+          Get Started
+        </AnimatedButton>
       </div>
       <MeshGradientBackground />
       <Description />
