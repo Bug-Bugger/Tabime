@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardContent, CardTitle } from "@components/ui/card";
-import { Car } from "lucide-react";
+import { ClipboardList, MapPinCheck, Plane } from "lucide-react";
 
 const Dashboard = () => {
   return (
@@ -21,47 +21,68 @@ const Dashboard = () => {
           />
         </svg>
 
-        <h1 className="font-bold text-blue-50 text-3xl font-sans pt-24 px-10 md:px-32 z-20">
-          Welcome Back! Explorer!
+        <h1 className="font-bold text-blue-50 text-3xl font-sans pt-24 px-10 md:px-32 z-20 motion-preset-slide-right">
+          Welcome Back! xxx!
         </h1>
       </div>
-      <div className="w-auto grid grid-cols-1 mx-20 md:grid-cols-3 gap-4 p-4 font-sans text-blue-500">
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle className="text-lg font-sans text-blue-500">
-              Anime List
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl border-b-2 w-fit pr-4 -mt-5 text-blue-600">
-              42
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle className="text-lg font-sans text-blue-500">
-              Saved Locations
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl border-b-2 w-fit pr-4 -mt-5 text-blue-600">
-              28
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle className="text-lg font-sans text-blue-500">
-              Travel Plans
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl border-b-2 w-fit pr-4 -mt-5 text-blue-600">
-              3
-            </div>
-          </CardContent>
-        </Card>
+      <div className="w-auto mx-5 md:mx-20 p-4">
+        <div className="w-auto grid grid-cols-1 md:grid-cols-3 gap-4 font-sans text-blue-500">
+          <Card className="w-full motion-opacity-in-0 motion-translate-y-in-50 motion-blur-in-md">
+            <CardHeader>
+              <CardTitle className="text-lg font-sans text-blue-500 flex">
+                <div className="rounded-full bg-blue-100 flex items-center justify-center w-7 h-7 mr-2">
+                  <ClipboardList size={20} className="text-blue-500 " />
+                </div>
+                Anime List
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl border-b-2 w-fit ml-9 pr-4 -mt-5 text-blue-600">
+                42
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="w-full motion-opacity-in-0 motion-delay-100/translate motion-translate-y-in-50 motion-blur-in-md ">
+            <CardHeader>
+              <CardTitle className="text-lg font-sans text-blue-500 flex">
+                <div className="rounded-full bg-blue-100 flex items-center justify-center w-7 h-7 mr-2">
+                  <MapPinCheck size={20} className="text-blue-500 " />
+                </div>
+                Saved Locations
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl border-b-2 w-fit ml-9 pr-4 -mt-5 text-blue-600">
+                28
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="w-full motion-opacity-in-0 motion-delay-150/translate motion-translate-y-in-50 motion-blur-in-md">
+            <CardHeader>
+              <CardTitle className="text-lg font-sans text-blue-500 flex">
+                <div className="rounded-full bg-blue-100 flex items-center justify-center w-7 h-7 mr-2">
+                  <Plane size={20} className="text-blue-500 " />
+                </div>
+                Travel Plans
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl border-b-2 w-fit ml-9 pr-4 -mt-5 text-blue-600">
+                3
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="my-6">
+          <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-preset-slide-right">
+            Anime Lists
+          </h1>
+        </div>
+        <div className="my-6">
+          <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-duration-1000 motion-preset-slide-right">
+            Travel Plans
+          </h1>
+        </div>
       </div>
     </div>
   );
