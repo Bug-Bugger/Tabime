@@ -158,7 +158,6 @@ const Description: React.FC = () => {
         .to(optPathRef.current, { opacity: 1, y: 0, duration: 0.5 }, "<")
         .addLabel("Finished")
         .to({}, { duration: 1 });
-
     }, containerRef);
     return () => {
       ctx.revert();
@@ -174,7 +173,7 @@ const Description: React.FC = () => {
         <div
           className="absolute 
         lg:text-5xl lg:left-[-35%] lg:w-[90%] lg:top-[30%] lg:leading-tight lg:max-w-[50%] lg:text-center
-        text-pretty text-2xl top-[20%] left-[15%] w-[35%] text-center font-semibold"
+        text-pretty text-2xl top-[20%] left-[15%] w-[35%] text-center font-semibold font-sans"
         >
           <div className="relative drop-shadow-md">
             <div
