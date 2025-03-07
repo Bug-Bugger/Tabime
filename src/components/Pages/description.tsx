@@ -161,6 +161,7 @@ const Description: React.FC = () => {
     }, containerRef);
     return () => {
       ctx.revert();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
