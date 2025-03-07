@@ -39,7 +39,7 @@ const NavBar: React.FC = () => {
           : "bg-transparent backdrop-blur-0"
       } ${isSticky && !mobileMenuOpen ? "shadow-md" : ""}`}
     >
-      <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+      <div className="flex justify-between items-center px-10 md:px-24 py-4 mx-auto">
         <Link href="/" className="flex items-center cursor-pointer">
           <Image
             src={logo}
@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
 
         {/* desktop navbar */}
         <div className="hidden md:flex">
-          <ul className="flex justify-center items-center space-x-8 text-blue-50 font-medium mr-8">
+          <ul className="flex justify-center items-center space-x-8 text-blue-50 font-medium mr-8 drop-shadow-sm">
             {navItems.map((item, index) => (
               <li
                 key={index}
@@ -99,7 +99,7 @@ const NavBar: React.FC = () => {
             mobileMenuOpen ? "translate-y-0" : "-translate-y-4"
           }`}
         >
-          <ul className="flex flex-col space-y-4 text-center font-sans text-blue-50 drop-shadow-md">
+          <ul className="flex flex-col space-y-4 text-center text-xl font-sans text-blue-50 drop-shadow-sm">
             {navItems.map((item, index) => (
               <li
                 key={index}
