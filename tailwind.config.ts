@@ -19,5 +19,12 @@ export default {
       },
     },
   },
+  safelist: [
+    "from-purple-500",
+    "to-blue-500",
+    "after:from-purple-500",
+    "after:to-blue-500",
+    "before:via-purple-300",
+  ],
   plugins: [],
 } satisfies Config;
