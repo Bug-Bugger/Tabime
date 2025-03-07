@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from "react";
 
 /**
  * Defines the intensity values for various gradient layers
@@ -19,7 +19,8 @@ export type ColorIntensity = {
 /**
  * Props for the AnimatedButton component
  */
-export interface AnimatedButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface AnimatedButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Primary color name (using Tailwind color names) */
   baseColor?: string;
   /** Secondary color name (using Tailwind color names) */
@@ -44,5 +45,5 @@ export const DEFAULT_INTENSITY: ColorIntensity = {
   accent: 500,
   hoverBase: 500,
   hoverAccent: 400,
-  glow: 300
+  glow: 300,
 };
