@@ -83,9 +83,23 @@ const NavBar: React.FC = () => {
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-      {mobileMenuOpen && (
-        <div className="top-[4.5rem] left-0 right-0 shadow-md p-4 rounded-lg">
-          <ul className="flex flex-col space-y-4 text-center font-sans text-blue-50 drop-shadow-md ">
+      <div
+        className={`
+        px-4 rounded-lg
+        md:hidden overflow-hidden transition-all duration-300 ease-in-out 
+        ${
+          mobileMenuOpen
+            ? "max-h-[300px] opacity-100 py-4 shadow-md"
+            : "max-h-0 opacity-0 py-0 border-transparent"
+        }
+      `}
+      >
+        <div
+          className={`transform transition-transform duration-300 ${
+            mobileMenuOpen ? "translate-y-0" : "-translate-y-4"
+          }`}
+        >
+          <ul className="flex flex-col space-y-4 text-center font-sans text-blue-50 drop-shadow-md">
             {navItems.map((item, index) => (
               <li
                 key={index}
@@ -106,7 +120,7 @@ const NavBar: React.FC = () => {
             </button>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
