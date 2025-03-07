@@ -47,14 +47,14 @@ const NavBar: React.FC = () => {
             className="w-10 h-10 hover:rotate-180 ease-in-out transition-all duration-500"
             priority={true}
           />
-          <p className="text-2xl font-sans font-semibold ml-3 text-gray-800">
+          <p className="text-2xl font-sans font-semibold ml-3 text-blue-50 drop-shadow-sm">
             Tabime
           </p>
         </Link>
 
         {/* desktop navbar */}
         <div className="hidden md:flex">
-          <ul className="flex justify-center items-center space-x-8 text-gray-700 font-medium mr-8">
+          <ul className="flex justify-center items-center space-x-8 text-blue-50 font-medium mr-8">
             {navItems.map((item, index) => (
               <li
                 key={index}
@@ -87,8 +87,16 @@ const NavBar: React.FC = () => {
         <div className="top-[4.5rem] left-0 right-0 shadow-md p-4 rounded-lg">
           <ul className="flex flex-col space-y-4 text-center font-sans text-blue-50 drop-shadow-md ">
             {navItems.map((item, index) => (
-              <li key={index} className="cursor-pointer hover:text-blue-100">
-                <a href={`/${item.toLowerCase()}`}>{item}</a>
+              <li
+                key={index}
+                className="relative cursor-pointer transition-colors duration-300 hover:text-[#2563eb]"
+              >
+                <a
+                  className="relative hover:after:w-full after:content-[''] after:bg-[#2563eb] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300"
+                  href={`/${item.toLowerCase()}`}
+                >
+                  {item}
+                </a>
               </li>
             ))}
           </ul>
