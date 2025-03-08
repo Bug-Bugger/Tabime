@@ -35,7 +35,7 @@ const NavBar: React.FC = () => {
     <nav
       className={`fixed w-full z-40 transition-all duration-500 ease-in-out font-sans ${
         isSticky || mobileMenuOpen
-          ? "bg-[#c1c8e4] bg-opacity-50 backdrop-blur-lg"
+          ? "bg-[#97a6df] bg-opacity-50 backdrop-blur-lg"
           : "bg-transparent backdrop-blur-0"
       } ${isSticky && !mobileMenuOpen ? "shadow-md" : ""}`}
     >
