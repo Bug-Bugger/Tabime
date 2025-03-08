@@ -153,13 +153,16 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-        <div className="my-6">
-          <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-duration-1000 motion-preset-slide-right">
+        <div className="my-6 ">
+          <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300">
             Travel Plans
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5">
-            {tempTravelPlans.map((plan, index) => (
-              <Card key={index} className="w-full motion-preset-blur-up">
+            {travelPlans.map((plan, index) => (
+              <Card
+                key={index}
+                className="w-full intersect-once intersect:motion-preset-slide-up motion-delay-200"
+              >
                 <CardHeader className=" bg-blue-600">
                   <CardTitle className="text-blue-50 text-xl">
                     {plan.title}

@@ -71,5 +71,9 @@ export default {
     "after:to-blue-400",
     "before:via-purple-300",
   ],
-  plugins: [require("tailwindcss-animate"), require("tailwindcss-motion")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwindcss-motion"),
+    require("tailwindcss-intersect"),
+  ],
 } satisfies Config;
