@@ -8,8 +8,9 @@ import {
 import { Badge } from "@components/ui/badge";
 import { Button } from "@components/ui/button";
 import { ClipboardList, MapPinCheck, Plane } from "lucide-react";
+import { Anime, TravelPlan } from "@components/types/dataTypes";
 
-const tempAnimeList = [
+const animeList: Anime[] = [
   {
     title: "Summer Pocket",
     tags: ["Slice of Life", "Romance"],
@@ -27,7 +28,7 @@ const tempAnimeList = [
   },
 ];
 
-const tempTravelPlans = [
+const travelPlans: TravelPlan[] = [
   {
     title: "Tokyo Anime Tour",
     startDate: new Date("2022-10-10"),
@@ -123,7 +124,7 @@ const Dashboard = () => {
             Anime Lists
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-5">
-            {tempAnimeList.map((anime, index) => (
+            {animeList.map((anime, index) => (
               <Card key={index} className="w-full motion-preset-blur-up">
                 <CardContent className="p-5">
                   <div className="w-full h-44 bg-blue-200 rounded-md">img</div>
