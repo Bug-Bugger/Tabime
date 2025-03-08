@@ -34,6 +34,11 @@ const animeList: Anime[] = [
     tags: ["Music", "Drama"],
     locationCount: 30,
   },
+  {
+    title: "Steins;Gate",
+    tags: ["Sci-Fi", "Thriller"],
+    locationCount: 42,
+  },
 ];
 
 const travelPlans: TravelPlan[] = [
@@ -52,6 +57,14 @@ const travelPlans: TravelPlan[] = [
     locationCount: 43,
     animeCount: 12,
     collaborators: 1,
+  },
+  {
+    title: "Osaka Anime Tour",
+    startDate: new Date("2022-12-10"),
+    endDate: new Date("2022-12-20"),
+    locationCount: 22,
+    animeCount: 7,
+    collaborators: 10,
   },
 ];
 
@@ -139,7 +152,7 @@ const Dashboard = () => {
           <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-preset-slide-right">
             Anime Lists
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-5">
             {animeList.map((anime, index) => (
               <Card key={index} className="w-full motion-preset-blur-up">
                 <CardContent className="p-5">
@@ -169,6 +182,13 @@ const Dashboard = () => {
               </Card>
             ))}
           </div>
+          {animeList.length > 0 && (
+            <div className="flex justify-center motion-preset-blur-up-sm">
+              <Button className="mt-4 bg-blue-500 hover:bg-blue-600">
+                View All
+              </Button>
+            </div>
+          )}
           {animeList.length === 0 && (
             <div
               className="flex flex-col items-center justify-center text-blue-500 text-lg font-sans
@@ -262,6 +282,13 @@ const Dashboard = () => {
               </Card>
             ))}
           </div>
+          {travelPlans.length > 0 && (
+            <div className="flex justify-center intersect-once intersect:motion-preset-blur-up motion-delay-200">
+              <Button className="mt-4 bg-blue-500 hover:bg-blue-600">
+                View All
+              </Button>
+            </div>
+          )}
           {travelPlans.length === 0 && (
             <div
               className="flex flex-col items-center justify-center text-blue-500 text-lg font-sans
