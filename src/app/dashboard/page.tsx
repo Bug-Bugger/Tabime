@@ -205,8 +205,36 @@ const Dashboard = () => {
                 key={index}
                 className="w-full intersect-once intersect:motion-preset-slide-up motion-delay-200"
               >
-                <CardHeader className=" bg-blue-600">
-                  <CardTitle className="text-blue-50 text-xl">
+                <CardHeader className="bg-blue-600 relative overflow-hidden">
+                  {/* Decorative Elements */}
+                  <div className="absolute top-2 right-2 w-12 h-12 rounded-full border-4 border-white opacity-10" />
+                  <svg
+                    className="absolute top-[2%] right-1/4 w-16 h-16 opacity-10 rotate-[30deg]"
+                    viewBox="0 0 100 100"
+                  >
+                    <polygon
+                      points="50,10 90,80 10,80"
+                      fill="white"
+                      stroke="none"
+                      stroke-width="1"
+                    />
+                  </svg>
+                  <svg
+                    className="absolute top-0 left-0 w-full h-full"
+                    viewBox="0 0 100 24"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0,20 C16.7,13.3 33.3,24 50,16.7 C66.7,9.3 83.3,20 100,15"
+                      stroke="white"
+                      strokeWidth="1"
+                      opacity="0.2"
+                      fill="none"
+                    />
+                  </svg>
+                  <div className="absolute top-0 left-0 w-3 h-full bg-blue-400 opacity-20"></div>
+
+                  <CardTitle className="text-blue-50 text-xl relative z-10">
                     {plan.title}
                   </CardTitle>
                 </CardHeader>
