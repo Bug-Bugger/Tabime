@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardHeader,
@@ -7,7 +9,13 @@ import {
 } from "@components/ui/card";
 import { Badge } from "@components/ui/badge";
 import { Button } from "@components/ui/button";
-import { ClipboardList, MapPinCheck, Plane } from "lucide-react";
+import {
+  ClipboardList,
+  MapPinCheck,
+  Plane,
+  LayoutList,
+  NotebookPen,
+} from "lucide-react";
 import { Anime, TravelPlan } from "@components/types/dataTypes";
 
 const animeList: Anime[] = [
@@ -46,6 +54,14 @@ const travelPlans: TravelPlan[] = [
     collaborators: 1,
   },
 ];
+
+const handleCreatePlan = () => {
+  console.log("Create Plan");
+};
+
+const handleAddAnime = () => {
+  console.log("Add Anime");
+};
 
 const Dashboard = () => {
   return (
@@ -153,9 +169,34 @@ const Dashboard = () => {
               </Card>
             ))}
           </div>
+          {animeList.length === 0 && (
+            <div
+              className="flex flex-col items-center justify-center text-blue-500 text-lg font-sans
+            motion-preset-blur-up"
+            >
+              <div className="bg-blue-300 rounded-full w-24 h-24 flex items-center justify-center">
+                <LayoutList size={62} />
+              </div>
+              <div className="text-purple-500 pt-2 text-xl">
+                No anime Lists Yet
+              </div>
+              <div className="text-blue-400 text-sm">
+                Add your first anime or import from MAL to get started
+              </div>
+              <Button
+                onClick={handleAddAnime}
+                className="mt-4 bg-blue-500 hover:bg-blue-600"
+              >
+                Add Anime
+              </Button>
+            </div>
+          )}
         </div>
         <div className="my-6 ">
-          <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300">
+          <h1
+            className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300
+          intersect-once intersect:motion-preset-slide-right motion-delay-200"
+          >
             Travel Plans
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5">
@@ -193,6 +234,28 @@ const Dashboard = () => {
               </Card>
             ))}
           </div>
+          {travelPlans.length === 0 && (
+            <div
+              className="flex flex-col items-center justify-center text-blue-500 text-lg font-sans
+           intersect-once intersect:motion-preset-blur-up motion-delay-200"
+            >
+              <div className="bg-blue-300 rounded-full w-24 h-24 flex items-center justify-center">
+                <NotebookPen size={62} />
+              </div>
+              <div className="text-purple-500 pt-2 text-xl">
+                No Travel Plans Yet
+              </div>
+              <div className="text-blue-400 text-sm">
+                Create your first plan!
+              </div>
+              <Button
+                onClick={handleCreatePlan}
+                className="mt-4 bg-blue-500 hover:bg-blue-600"
+              >
+                Create Plan
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
