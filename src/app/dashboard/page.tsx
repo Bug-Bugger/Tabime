@@ -79,9 +79,9 @@ const handleAddAnime = () => {
 const Dashboard = () => {
   return (
     <div className="min-h-screen w-full">
-      <div className="relative h-44 w-full bg-gradient-to-t from-[#7694e1] to-[#5680E9] shadow-md">
-        <div className="absolute -top-5 right-[10%] h-40 w-40 rounded-full bg-[#a7c0ff] opacity-20 z-0"></div>
-        <div className="absolute top-[12%] left-[5%] h-24 w-24 rounded-full bg-[#8656ff] opacity-10 z-0"></div>
+      <div className="relative min-h-52 h-[20%] w-full bg-gradient-to-t from-[#839ee3] to-[#5887fe] shadow-md flex items-center">
+        <div className="absolute -top-5 right-[10%] h-40 w-40 rounded-full bg-[#99b5fa] opacity-20 z-0"></div>
+        <div className="absolute top-[12%] left-[5%] h-24 w-24 rounded-full bg-[#8656ff] opacity-20 z-0"></div>
         <svg
           className="absolute top-0 w-full h-full"
           viewBox="0 0 100 24"
@@ -91,12 +91,12 @@ const Dashboard = () => {
             d="M0,20 C16.7,13.3 33.3,24 50,16.7 C66.7,9.3 83.3,20 100,15"
             stroke="white"
             strokeWidth="0.5"
-            opacity="0.2"
+            opacity="0.15"
             fill="none"
           />
         </svg>
 
-        <h1 className="font-bold text-blue-50 text-3xl font-sans pt-24 px-10 md:px-32 z-20 motion-preset-slide-right">
+        <h1 className="font-bold text-blue-50 text-3xl font-sans px-10 md:px-32 z-20 motion-preset-slide-right mt-10">
           Welcome Back! xxx!
         </h1>
       </div>
