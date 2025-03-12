@@ -10,7 +10,7 @@ const NavBar: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = ["Dashboard", "Map", "Routes", "Discover"];
+  const navItems = ["Dashboard", "Trips", "Discover"];
 
   const handleScroll = () => {
     setSticky(window.scrollY > 60);
