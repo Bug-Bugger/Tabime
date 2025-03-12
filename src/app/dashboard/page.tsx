@@ -236,7 +236,7 @@ const Dashboard = () => {
                       points="50,10 90,80 10,80"
                       fill="white"
                       stroke="none"
-                      stroke-width="1"
+                      strokeWidth="1"
                     />
                   </svg>
                   <svg
