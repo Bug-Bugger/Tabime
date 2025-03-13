@@ -64,7 +64,7 @@ const Trip = () => {
                 onClick={() => setActiveFilter(filter.type)}
                 className={`${
                   activeFilter === filter.type ? "bg-primary" : "bg-secondary"
-                } text-primary-foreground rounded-3xl px-6 py-5`}
+                } text-primary-foreground rounded-3xl px-6 py-5 text-md`}
               >
                 {filter.label}
               </Button>
@@ -75,12 +75,12 @@ const Trip = () => {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="outline"
-                  className="text-secondary rounded-3xl px-6 py-5 border-secondary"
+                  className="text-secondary rounded-3xl px-6 w-56 py-5 border-secondary text-md"
                 >
                   Sort By: {activeSort}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="overflow-hidden">
+              <DropdownMenuContent>
                 <DropdownMenuRadioGroup
                   value={activeSort}
                   onValueChange={(value) =>
@@ -88,7 +88,11 @@ const Trip = () => {
                   }
                 >
                   {TRIP_SORTS.map((sort, index) => (
-                    <DropdownMenuRadioItem key={index} value={sort.type}>
+                    <DropdownMenuRadioItem
+                      key={index}
+                      value={sort.type}
+                      className="text-secondary"
+                    >
                       {sort.label}
                     </DropdownMenuRadioItem>
                   ))}
