@@ -20,7 +20,9 @@ export interface Trip {
   description: string;
   startDate: Date;
   endDate: Date;
+  lastModifiedDate: Date;
   imageUrl?: string;
+  Favorites: boolean;
   collaborators: number;
   anime: Anime[];
   locations: Location[];
@@ -30,6 +32,7 @@ export enum TripFilterType {
   ALL = "All",
   MY_TRIPS = "My Trips",
   SHARED = "Shared",
+  FAVORITES = "Favorites",
 }
 
 export interface TripFilter {
@@ -40,6 +43,7 @@ export interface TripFilter {
 export const TRIP_FILTERS: TripFilter[] = [
   { type: TripFilterType.ALL, label: "All" },
   { type: TripFilterType.MY_TRIPS, label: "My Trips" },
+  { type: TripFilterType.FAVORITES, label: "Favorites" },
   { type: TripFilterType.SHARED, label: "Shared with me" },
 ];
 
@@ -47,6 +51,7 @@ export enum TripSortType {
   NEWEST = "Newest",
   OLDEST = "Oldest",
   NAME = "Name",
+  LAST_MODIFIED = "Last Modified",
   LOCATION_COUNT = "Location Count",
 }
 
@@ -116,6 +121,8 @@ export const TEMP_TRIPS: Trip[] = [
     description: "A trip to Tokyo to visit anime locations",
     startDate: new Date("2022-10-10"),
     endDate: new Date("2022-10-20"),
+    lastModifiedDate: new Date("2022-10-01"),
+    Favorites: true,
     locations: TEMP_LOCATIONS,
     anime: TEMP_ANIME,
     collaborators: 3,
@@ -126,6 +133,8 @@ export const TEMP_TRIPS: Trip[] = [
     description: "A trip to Kyoto to visit anime locations",
     startDate: new Date("2022-11-10"),
     endDate: new Date("2022-11-20"),
+    lastModifiedDate: new Date("2022-11-01"),
+    Favorites: false,
     locations: TEMP_LOCATIONS.concat(TEMP_LOCATIONS),
     anime: TEMP_ANIME.concat(TEMP_ANIME).concat(TEMP_ANIME),
     collaborators: 1,
@@ -136,6 +145,8 @@ export const TEMP_TRIPS: Trip[] = [
     description: "A trip to Osaka to visit anime locations",
     startDate: new Date("2022-12-10"),
     endDate: new Date("2022-12-20"),
+    lastModifiedDate: new Date("2022-12-01"),
+    Favorites: false,
     locations: TEMP_LOCATIONS.concat(TEMP_LOCATIONS).concat(TEMP_LOCATIONS),
     anime: TEMP_ANIME.concat(TEMP_ANIME),
     collaborators: 10,
