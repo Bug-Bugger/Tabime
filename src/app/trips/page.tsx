@@ -14,17 +14,16 @@ import {
   DropdownMenuTrigger,
 } from "@components/ui/dropdown-menu";
 import { Button } from "@components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   TripFilterType,
   TRIP_FILTERS,
   TripSortType,
   TRIP_SORTS,
   TEMP_TRIPS,
+  TEMP_USER_A,
   Trip,
 } from "@components/types/dataTypes";
-
-const DisplayTrip: Trip[] = TEMP_TRIPS;
 
 const TripPage = () => {
   const [activeFilter, setActiveFilter] = useState<TripFilterType>(
@@ -33,6 +32,47 @@ const TripPage = () => {
   const [activeSort, setActiveSort] = useState<TripSortType>(
     TripSortType.NEWEST
   );
+
+  const tripFilter = (trip: Trip) => {
+    switch (activeFilter) {
+      case TripFilterType.ALL:
+        return true;
+      case TripFilterType.FAVORITES:
+        return trip.isFavorite;
+      case TripFilterType.MY_TRIPS:
+        return trip.tripOwner.id === TEMP_USER_A.id;
+      case TripFilterType.SHARED:
+        return trip.tripOwner.id !== TEMP_USER_A.id;
+      default:
+        return true;
+    }
+  };
+
+  const tripSort = (a: Trip, b: Trip) => {
+    switch (activeSort) {
+      case TripSortType.NAME:
+        return a.title.localeCompare(b.title);
+      case TripSortType.NEWEST:
+        return a.startDate.getTime() - b.startDate.getTime();
+      case TripSortType.OLDEST:
+        return b.startDate.getTime() - a.startDate.getTime();
+      case TripSortType.LAST_MODIFIED:
+        return a.lastModifiedDate.getTime() - b.lastModifiedDate.getTime();
+      case TripSortType.LOCATION_COUNT:
+        return a.locations.length - b.locations.length;
+      default:
+        return 0;
+    }
+  };
+
+  const tripData: Trip[] = TEMP_TRIPS;
+  const [displayData, setDisplayData] = useState<Trip[]>(
+    tripData.filter(tripFilter).sort(tripSort)
+  );
+
+  useEffect(() => {
+    setDisplayData(tripData.filter(tripFilter).sort(tripSort));
+  }, [activeFilter, activeSort]);
 
   return (
     <div className="min-h-screen w-full bg-background">
@@ -109,6 +149,27 @@ const TripPage = () => {
           <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-preset-slide-right">
             Active Trips
           </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayData.map((trip, index) => (
+              <Card key={index} className="motion-preset-slide-up-md">
+                <CardHeader>
+                  <CardTitle>{trip.title}</CardTitle>
+                  <CardDescription>{trip.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex justify-between items-center">
+                    <p className="text-sm text-gray-500">
+                      {trip.startDate.toLocaleDateString()} -{" "}
+                      {trip.endDate.toLocaleDateString()}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {trip.locations.length} Locations
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>
