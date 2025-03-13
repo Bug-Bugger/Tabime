@@ -149,7 +149,7 @@ const TripPage = () => {
           <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-preset-slide-right">
             Active Trips
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-5">
             {displayData.map((trip, index) => (
               <Card key={index} className="motion-preset-slide-up-md">
                 <CardHeader>
