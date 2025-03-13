@@ -80,7 +80,6 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen w-full">
       <div className="relative min-h-52 h-[20%] w-full bg-gradient-to-t from-[#839ee3] to-[#5887fe] shadow-md flex items-center">
-        <div className="absolute -top-5 right-[10%] h-40 w-40 rounded-full bg-[#99b5fa] opacity-20 z-0"></div>
         <div className="absolute top-[12%] left-[5%] h-24 w-24 rounded-full bg-[#8656ff] opacity-20 z-0"></div>
         <svg
           className="absolute top-0 w-full h-full"
@@ -95,7 +94,36 @@ const Dashboard = () => {
             fill="none"
           />
         </svg>
-
+        <svg
+          className="absolute top-[5%] right-[30%] w-32 h-32 opacity-10 rotate-[38deg]"
+          viewBox="0 0 100 100"
+        >
+          <polygon
+            points="50,15.47 20,67.32 80,67.32"
+            fill="white"
+            stroke="none"
+          />
+        </svg>
+        <svg
+          className="absolute bottom-[10%] left-[15%] w-20 h-20 opacity-15 rotate-[15deg]"
+          viewBox="0 0 100 100"
+        >
+          <polygon
+            points="50,15.47 20,67.32 80,67.32"
+            fill="white"
+            stroke="none"
+          />
+        </svg>
+        <svg
+          className="absolute top-[30%] right-[13%] w-16 h-16 opacity-10 rotate-[102deg]"
+          viewBox="0 0 100 100"
+        >
+          <polygon
+            points="50,15.47 20,67.32 80,67.32"
+            fill="white"
+            stroke="none"
+          />
+        </svg>
         <h1 className="font-bold text-blue-50 text-3xl font-sans px-10 md:px-32 z-20 motion-preset-slide-right mt-10">
           Welcome Back! xxx!
         </h1>
@@ -175,7 +203,7 @@ const Dashboard = () => {
                   <CardDescription className="text-blue-400 mt-2">
                     {anime.locationCount} locations available
                   </CardDescription>
-                  <Button className="mt-4 bg-purple-500 hover:bg-purple-600">
+                  <Button className="mt-4 bg-[#9f73f1] hover:bg-[#7e4ff9]">
                     View
                   </Button>
                 </CardHeader>
