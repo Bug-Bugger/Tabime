@@ -1,3 +1,10 @@
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  imageUrl?: string;
+}
+
 export interface Anime {
   title: string;
   tags: string[];
@@ -22,7 +29,8 @@ export interface Trip {
   endDate: Date;
   lastModifiedDate: Date;
   imageUrl?: string;
-  Favorites: boolean;
+  isFavorite: boolean;
+  tripOwner: User;
   collaborators: number;
   anime: Anime[];
   locations: Location[];
@@ -63,9 +71,22 @@ export interface TripSort {
 export const TRIP_SORTS: TripSort[] = [
   { type: TripSortType.NEWEST, label: "Newest" },
   { type: TripSortType.OLDEST, label: "Oldest" },
+  { type: TripSortType.LAST_MODIFIED, label: "Last Modified" },
   { type: TripSortType.NAME, label: "Name" },
   { type: TripSortType.LOCATION_COUNT, label: "Location Count" },
 ];
+
+export const TEMP_USER_A: User = {
+  id: 1,
+  username: "User",
+  email: "abc@mail.com",
+};
+
+export const TEMP_USER_B: User = {
+  id: 2,
+  username: "User2",
+  email: "def@cornell.edu",
+};
 
 export const TEMP_ANIME: Anime[] = [
   {
@@ -122,7 +143,8 @@ export const TEMP_TRIPS: Trip[] = [
     startDate: new Date("2022-10-10"),
     endDate: new Date("2022-10-20"),
     lastModifiedDate: new Date("2022-10-01"),
-    Favorites: true,
+    isFavorite: true,
+    tripOwner: TEMP_USER_A,
     locations: TEMP_LOCATIONS,
     anime: TEMP_ANIME,
     collaborators: 3,
@@ -134,7 +156,8 @@ export const TEMP_TRIPS: Trip[] = [
     startDate: new Date("2022-11-10"),
     endDate: new Date("2022-11-20"),
     lastModifiedDate: new Date("2022-11-01"),
-    Favorites: false,
+    isFavorite: false,
+    tripOwner: TEMP_USER_B,
     locations: TEMP_LOCATIONS.concat(TEMP_LOCATIONS),
     anime: TEMP_ANIME.concat(TEMP_ANIME).concat(TEMP_ANIME),
     collaborators: 1,
@@ -146,7 +169,8 @@ export const TEMP_TRIPS: Trip[] = [
     startDate: new Date("2022-12-10"),
     endDate: new Date("2022-12-20"),
     lastModifiedDate: new Date("2022-12-01"),
-    Favorites: false,
+    isFavorite: false,
+    tripOwner: TEMP_USER_A,
     locations: TEMP_LOCATIONS.concat(TEMP_LOCATIONS).concat(TEMP_LOCATIONS),
     anime: TEMP_ANIME.concat(TEMP_ANIME),
     collaborators: 10,
