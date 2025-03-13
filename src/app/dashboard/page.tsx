@@ -16,57 +16,16 @@ import {
   LayoutList,
   NotebookPen,
 } from "lucide-react";
-import { Anime, TravelPlan } from "@components/types/dataTypes";
+import {
+  Anime,
+  Trip,
+  TEMP_ANIME,
+  TEMP_TRIPS,
+} from "@components/types/dataTypes";
 
-const animeList: Anime[] = [
-  {
-    title: "Summer Pocket",
-    tags: ["Slice of Life", "Romance"],
-    locationCount: 12,
-  },
-  {
-    title: "Girls Band Cry",
-    tags: ["Music", "Drama"],
-    locationCount: 52,
-  },
-  {
-    title: "BanG Dream! It's MyGO!!!!!",
-    tags: ["Music", "Drama"],
-    locationCount: 30,
-  },
-  {
-    title: "Steins;Gate",
-    tags: ["Sci-Fi", "Thriller"],
-    locationCount: 42,
-  },
-];
+const animeList: Anime[] = TEMP_ANIME;
 
-const travelPlans: TravelPlan[] = [
-  {
-    title: "Tokyo Anime Tour",
-    startDate: new Date("2022-10-10"),
-    endDate: new Date("2022-10-20"),
-    locationCount: 12,
-    animeCount: 5,
-    collaborators: 3,
-  },
-  {
-    title: "Kyoto Anime Tour",
-    startDate: new Date("2022-11-10"),
-    endDate: new Date("2022-11-20"),
-    locationCount: 43,
-    animeCount: 12,
-    collaborators: 1,
-  },
-  {
-    title: "Osaka Anime Tour",
-    startDate: new Date("2022-12-10"),
-    endDate: new Date("2022-12-20"),
-    locationCount: 22,
-    animeCount: 7,
-    collaborators: 10,
-  },
-];
+const trips: Trip[] = TEMP_TRIPS;
 
 const handleCreatePlan = () => {
   console.log("Create Plan");
@@ -245,10 +204,10 @@ const Dashboard = () => {
             className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300
           intersect-once intersect:motion-preset-slide-right motion-delay-200"
           >
-            Travel Plans
+            Trips
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5">
-            {travelPlans.map((plan, index) => (
+            {trips.map((trip, index) => (
               <Card
                 key={index}
                 className="w-full intersect-once intersect:motion-preset-slide-up motion-delay-200"
@@ -283,20 +242,20 @@ const Dashboard = () => {
                   <div className="absolute top-0 left-0 w-3 h-full bg-blue-400 opacity-20"></div>
 
                   <CardTitle className="text-blue-50 text-xl relative z-10">
-                    {plan.title}
+                    {trip.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-5 pt-3">
                   <CardDescription className="text-blue-400 py-1">
-                    {plan.startDate.toDateString()} -{" "}
-                    {plan.endDate.toDateString()}
+                    {trip.startDate.toDateString()} -{" "}
+                    {trip.endDate.toDateString()}
                   </CardDescription>
                   <CardDescription className="text-blue-400 py-1">
-                    {plan.locationCount} locations · {plan.animeCount} anime
-                    series
+                    {trip.locations.length} locations · {trip.anime.length}{" "}
+                    anime series
                   </CardDescription>
                   <CardDescription className="text-blue-400 py-1">
-                    {plan.collaborators} collaborators
+                    {trip.collaborators} collaborators
                   </CardDescription>
                   <CardDescription className="flex text-blue-400 py-4 gap-1">
                     <Button className="bg-blue-500 hover:bg-blue-600">
@@ -310,14 +269,14 @@ const Dashboard = () => {
               </Card>
             ))}
           </div>
-          {travelPlans.length > 0 && (
+          {trips.length > 0 && (
             <div className="flex justify-center intersect-once intersect:motion-preset-blur-up motion-delay-200">
               <Button className="mt-4 bg-blue-500 hover:bg-blue-600">
                 View All
               </Button>
             </div>
           )}
-          {travelPlans.length === 0 && (
+          {trips.length === 0 && (
             <div
               className="flex flex-col items-center justify-center text-blue-500 text-lg font-sans
            intersect-once intersect:motion-preset-blur-up motion-delay-200"
