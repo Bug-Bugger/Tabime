@@ -20,9 +20,13 @@ import {
   TRIP_FILTERS,
   TripSortType,
   TRIP_SORTS,
+  TEMP_TRIPS,
+  Trip,
 } from "@components/types/dataTypes";
 
-const Trip = () => {
+const DisplayTrip: Trip[] = TEMP_TRIPS;
+
+const TripPage = () => {
   const [activeFilter, setActiveFilter] = useState<TripFilterType>(
     TripFilterType.ALL
   );
@@ -111,4 +115,4 @@ const Trip = () => {
   );
 };
 
-export default Trip;
+export default TripPage;
