@@ -24,10 +24,23 @@ import {
   TEMP_USER_A,
   Trip,
 } from "@components/types/dataTypes";
+import { NotebookPen, Star } from "lucide-react";
+import Link from "next/link";
+
+const handleCreatePlan = () => {
+  console.log("Create Plan");
+};
+
+const handleTripFavorite = (tripId: string) => {
+  console.log("Favorite Trip", tripId);
+  // POST to update trip favorite status
+  // Upon success, update trip data
+  // const updatedTrip = TEMP_TRIPS.find((trip) => trip.id === tripId);
+};
 
 const TripPage = () => {
   const [activeFilter, setActiveFilter] = useState<TripFilterType>(
-    TripFilterType.ALL
+    TripFilterType.UPCOMING
   );
   const [activeSort, setActiveSort] = useState<TripSortType>(
     TripSortType.NEWEST
@@ -35,6 +48,8 @@ const TripPage = () => {
 
   const tripFilter = (trip: Trip) => {
     switch (activeFilter) {
+      case TripFilterType.UPCOMING:
+        return trip.startDate.getTime() > new Date().getTime();
       case TripFilterType.ALL:
         return true;
       case TripFilterType.FAVORITES:
@@ -147,29 +162,113 @@ const TripPage = () => {
         </div>
         <div className="my-5">
           <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-preset-slide-right">
-            Active Trips
+            Trips
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-5">
             {displayData.map((trip, index) => (
-              <Card key={index} className="motion-preset-slide-up-md">
-                <CardHeader>
-                  <CardTitle>{trip.title}</CardTitle>
-                  <CardDescription>{trip.description}</CardDescription>
+              <Card
+                key={index}
+                className="w-full intersect-once rounded-lg intersect:motion-preset-slide-up motion-delay-200 overflow-hidden"
+              >
+                <CardHeader className="bg-blue-600 h-60 relative">
+                  <button
+                    onClick={() => handleTripFavorite(trip.id)}
+                    className="focus:outline-none absolute top-4 left-4 z-10"
+                    aria-label={
+                      trip.isFavorite ? "Unstar document" : "Star document"
+                    }
+                  >
+                    <Star
+                      size={30}
+                      className={`${
+                        trip.isFavorite
+                          ? "text-yellow-500 fill-yellow-500"
+                          : "text-gray-300 group-hover:text-gray-400"
+                      } transition-colors`}
+                    />
+                  </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 300 180"
+                    className="w-full h-full"
+                  >
+                    {/* Path connecting waypoints */}
+                    <path
+                      d="M 40,140 C 70,100 90,130 130,90 S 180,70 220,50 260,20 280,40"
+                      fill="none"
+                      stroke="rgba(255,255,255,0.6)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeDasharray="0"
+                      strokeLinejoin="round"
+                    />
+
+                    {/* Waypoint markers */}
+                    <circle cx="40" cy="140" r="6" fill="#ffffff" />
+                    <circle cx="130" cy="90" r="6" fill="#ffffff" />
+                    <circle cx="220" cy="50" r="6" fill="#ffffff" />
+                    <circle cx="280" cy="40" r="6" fill="#ffffff" />
+
+                    {/* Starting point special marker */}
+                    <circle
+                      cx="40"
+                      cy="140"
+                      r="10"
+                      fill="none"
+                      stroke="#ffffff"
+                      strokeWidth="2"
+                    />
+                  </svg>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex justify-between items-center">
-                    <p className="text-sm text-gray-500">
-                      {trip.startDate.toLocaleDateString()} -{" "}
-                      {trip.endDate.toLocaleDateString()}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      {trip.locations.length} Locations
-                    </p>
-                  </div>
+                <CardContent className="p-5 pt-3">
+                  <CardTitle className="text-primary text-xl relative z-10">
+                    {trip.title}
+                  </CardTitle>
+                  <CardDescription className="text-secondary py-1">
+                    {trip.startDate.toDateString()} -{" "}
+                    {trip.endDate.toDateString()}
+                  </CardDescription>
+                  <CardDescription className="text-secondary py-1">
+                    {trip.locations.length} locations · {trip.anime.length}{" "}
+                    anime series
+                  </CardDescription>
+                  <CardDescription className="text-secondary py-1">
+                    {trip.collaborators} collaborators
+                  </CardDescription>
+                  <CardDescription className="flex text-secondary py-4 gap-1">
+                    <Button className="bg-blue-500 hover:bg-blue-600" asChild>
+                      <Link href={`/trips/${trip.id}`}>View</Link>
+                    </Button>
+                    <Button className="bg-blue-500 hover:bg-blue-600 ml-2">
+                      Edit
+                    </Button>
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
           </div>
+          {displayData.length === 0 && (
+            <div
+              className="flex flex-col items-center justify-center text-blue-500 text-lg font-sans
+           intersect-once intersect:motion-preset-blur-up motion-delay-200"
+            >
+              <div className="bg-blue-300 rounded-full w-24 h-24 flex items-center justify-center">
+                <NotebookPen size={62} />
+              </div>
+              <div className="text-purple-500 pt-2 text-xl">
+                No Travel Plans Yet
+              </div>
+              <div className="text-blue-400 text-sm">
+                Create your first plan!
+              </div>
+              <Button
+                onClick={handleCreatePlan}
+                className="mt-4 bg-blue-500 hover:bg-blue-600"
+              >
+                Create Plan
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
