@@ -93,21 +93,29 @@ export const TEMP_ANIME: Anime[] = [
     title: "Summer Pocket",
     tags: ["Slice of Life", "Romance"],
     locationCount: 12,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/en/1/17/Summer_Pockets_game_cover.jpg",
   },
   {
     title: "Girls Band Cry",
     tags: ["Music", "Drama"],
     locationCount: 52,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/en/d/db/Girls_Band_Cry_key_visual.jpg",
   },
   {
     title: "BanG Dream! It's MyGO!!!!!",
     tags: ["Music", "Drama"],
     locationCount: 30,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/en/d/db/Girls_Band_Cry_key_visual.jpg",
   },
   {
     title: "Steins;Gate",
     tags: ["Sci-Fi", "Thriller"],
     locationCount: 42,
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/en/e/e4/Steins%3BGate_cover_art.jpg",
   },
 ];
 

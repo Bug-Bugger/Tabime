@@ -22,6 +22,7 @@ import {
   TEMP_ANIME,
   TEMP_TRIPS,
 } from "@components/types/dataTypes";
+import Image from "next/image";
 
 const animeList: Anime[] = TEMP_ANIME;
 
@@ -143,7 +144,14 @@ const Dashboard = () => {
             {animeList.map((anime, index) => (
               <Card key={index} className="w-full motion-preset-blur-up">
                 <CardContent className="p-5">
-                  <div className="w-full h-44 bg-blue-200 rounded-md">img</div>
+                  <div className="w-full h-52 bg-blue-200 rounded-md overflow-hidden flex items-center relative aspect-[500/300]">
+                    <Image
+                      alt={anime.title}
+                      src={anime.imageUrl}
+                      layout="fill"
+                      className="object-cover"
+                    />
+                  </div>
                 </CardContent>
                 <CardHeader className="pt-0">
                   <div className="flex flex-wrap ">
@@ -210,7 +218,7 @@ const Dashboard = () => {
             {trips.map((trip, index) => (
               <Card
                 key={index}
-                className="w-full intersect-once intersect:motion-preset-slide-up motion-delay-200"
+                className="w-full intersect-once rounded-lg intersect:motion-preset-slide-up motion-delay-200 overflow-hidden"
               >
                 <CardHeader className="bg-blue-600 relative overflow-hidden">
                   {/* Decorative Elements */}
