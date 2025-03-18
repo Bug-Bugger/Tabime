@@ -1,4 +1,4 @@
-Copyname: TypeScript Check & Lint
+name: TypeScript Check & Lint
 
 on:
   push:
