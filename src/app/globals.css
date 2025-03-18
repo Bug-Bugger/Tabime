@@ -111,6 +111,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    scrollbar-gutter: stable both-edges;
   }
 }
