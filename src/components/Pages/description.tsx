@@ -161,12 +161,13 @@ const Description: React.FC = () => {
     }, containerRef);
     return () => {
       ctx.revert();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   return (
     <div
-      className="z-20 w-full h-screen flex justify-center items-center"
+      className="z-20 w-full h-screen flex justify-center items-center bg-blue-200"
       ref={containerRef}
     >
       <div className="relative w-[650px] max-w-full">
