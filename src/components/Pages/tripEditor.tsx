@@ -21,6 +21,7 @@ export default function TripEditor({ tripId }: { tripId: string }) {
 	});
 
 	const [map, setMap] = useState<google.maps.Map | null>(null);
+	const [mapCenter, setMapCenter] = useState<google.maps.LatLngLiteral>({ lat: 40.7128, lng: -74.006 });
 	const [isSideBannerOpen, setIsSideBannerOpen] = useState<boolean>(false);
 	//   const [loading, setLoading] = useState(true);
 
@@ -144,7 +145,7 @@ export default function TripEditor({ tripId }: { tripId: string }) {
 					<GoogleMap
 						mapContainerClassName="w-full h-full"
 						zoom={13}
-						center={{ lat: 40.7128, lng: -74.006 }}
+						center={mapCenter}
 						onLoad={(map) => setMap(map)}
 						options={{
 							fullscreenControl: false,
@@ -189,7 +190,7 @@ export default function TripEditor({ tripId }: { tripId: string }) {
 						</div>
 					</div>
 					<div className="flex flex-col">
-						<Tabs content={[tripDescription]}/>
+						<Tabs content={[tripDescription]} />
 					</div>
 				</div>
 			) : null}
