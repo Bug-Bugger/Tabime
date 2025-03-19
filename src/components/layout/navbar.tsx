@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -40,9 +39,11 @@ const NavBar: React.FC = () => {
       } ${isSticky && !mobileMenuOpen ? "shadow-md" : ""}`}
     >
       <div className="flex justify-between items-center px-10 md:px-24 py-4 mx-auto">
-        <Link href="/" className="flex items-center cursor-pointer">
+        <Link href="/" className="flex items-center cursor-pointer w-32">
           <Image
-            src={logo}
+            src={"/assets/logo.svg"}
+            width={40}
+            height={40}
             alt="Tabime Logo"
             className="w-10 h-10 hover:rotate-180 ease-in-out transition-all duration-500"
             priority={true}
