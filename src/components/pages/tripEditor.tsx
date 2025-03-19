@@ -8,9 +8,9 @@ import {
 } from "@components/ui/card";
 import { Button } from "@components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Tabs from "@components/Reusable/tabs";
+import Tabs from "@components/reusable/tabs";
 import { GoogleMap, useLoadScript, Libraries } from "@react-google-maps/api";
-import trips from "../../../public/assets/trip.json";
+import trips from "@assets/trip.json";
 
 const libraries: Libraries = ["places"];
 
