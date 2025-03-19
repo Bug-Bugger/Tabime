@@ -31,7 +31,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.ja",
-    "public/assets/*"
+    "public/**/*"
   ],
   "exclude": ["node_modules"]
 }
