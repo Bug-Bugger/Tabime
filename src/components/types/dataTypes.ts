@@ -78,6 +78,23 @@ export const TRIP_SORTS: TripSort[] = [
   { type: TripSortType.LOCATION_COUNT, label: "Location Count" },
 ];
 
+export enum DiscoverSortType {
+  RELEVANCE = "Relevance",
+  POPULARITY = "Popularity",
+  NEWEST = "Newest",
+}
+
+export interface DiscoverSort {
+  type: DiscoverSortType;
+  label: string;
+}
+
+export const DISCOVER_SORTS: DiscoverSort[] = [
+  { type: DiscoverSortType.RELEVANCE, label: "Relevance" },
+  { type: DiscoverSortType.POPULARITY, label: "Popularity" },
+  { type: DiscoverSortType.NEWEST, label: "Newest" },
+];
+
 export const TEMP_USER_A: User = {
   id: "1",
   username: "User",
