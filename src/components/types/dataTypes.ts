@@ -1,3 +1,5 @@
+import exp from "constants";
+
 export interface User {
   id: string;
   username: string;
@@ -76,6 +78,23 @@ export const TRIP_SORTS: TripSort[] = [
   { type: TripSortType.LAST_MODIFIED, label: "Last Modified" },
   { type: TripSortType.NAME, label: "Name" },
   { type: TripSortType.LOCATION_COUNT, label: "Location Count" },
+];
+
+export enum DiscoverFilterType {
+  ANIME = "Anime",
+  LOCATION = "Location",
+  TRIP = "Trip",
+}
+
+export interface DiscoverFilter {
+  type: DiscoverFilterType;
+  label: string;
+}
+
+export const DISCOVER_FILTERS: DiscoverFilter[] = [
+  { type: DiscoverFilterType.ANIME, label: "Anime" },
+  { type: DiscoverFilterType.LOCATION, label: "Location" },
+  { type: DiscoverFilterType.TRIP, label: "Trip" },
 ];
 
 export enum DiscoverSortType {

@@ -8,12 +8,22 @@ import {
 } from "@components/ui/dropdown-menu";
 import { Button } from "@components/ui/button";
 import { useState } from "react";
-import { DiscoverSortType, DISCOVER_SORTS } from "@components/types/dataTypes";
+import {
+  DiscoverSortType,
+  DiscoverFilterType,
+  DISCOVER_SORTS,
+  DISCOVER_FILTERS,
+} from "@components/types/dataTypes";
 
 const DiscoverPage = () => {
   const [activeSort, setActiveSort] = useState<DiscoverSortType>(
     DiscoverSortType.RELEVANCE
   );
+
+  const [activeFilter, setActiveFilter] = useState<DiscoverFilterType>(
+    DiscoverFilterType.ANIME
+  );
+
   return (
     <div className="min-h-screen w-full bg-background">
       <div className="relative min-h-52 h-[20%] w-full bg-gradient-to-br from-primary to-highlight shadow-md flex items-center">
@@ -229,7 +239,19 @@ const DiscoverPage = () => {
       </div>
       <div className="w-auto mx-5 md:mx-20 p-4">
         <div className="h-[7vh] w-full flex justify-between items-center motion-preset-slide-up-md">
-          <div className="flex space-x-2"></div>
+          <div className="flex space-x-2">
+            {DISCOVER_FILTERS.map((filter, index) => (
+              <Button
+                key={index}
+                onClick={() => setActiveFilter(filter.type)}
+                className={`${
+                  activeFilter === filter.type ? "bg-primary" : "bg-secondary"
+                } text-primary-foreground rounded-3xl px-6 py-5 text-md`}
+              >
+                {filter.label}
+              </Button>
+            ))}
+          </div>
           <div>
             <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
@@ -260,6 +282,11 @@ const DiscoverPage = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
+        </div>
+        <div className="my-5">
+          <h1 className="font-bold text-blue-500 text-2xl font-sans border-b-4 w-fit border-blue-300 motion-preset-slide-right">
+            Recommended for you
+          </h1>
         </div>
       </div>
     </div>
