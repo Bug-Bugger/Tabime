@@ -1,5 +1,3 @@
-import exp from "constants";
-
 export interface User {
   id: string;
   username: string;
