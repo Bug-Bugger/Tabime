@@ -23,6 +23,8 @@ import {
   TEMP_TRIPS,
 } from "@components/types/dataTypes";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { createClient } from "@src/utils/supabase/client";
 
 const animeList: Anime[] = TEMP_ANIME;
 
@@ -37,6 +39,24 @@ const handleAddAnime = () => {
 };
 
 const Dashboard = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const supabase = createClient();
+      const { data: { user }, error } = await supabase.auth.getUser();
+
+      if (error) {
+        console.error("Error fetching user:", error);
+        return;
+      }
+      console.log("User data:", user);
+    };
+
+    fetchUser();
+  }
+  , []);
+
   return (
     <div className="min-h-screen w-full">
       <div className="relative min-h-52 h-[20%] w-full bg-gradient-to-t from-[#839ee3] to-[#5887fe] shadow-md flex items-center">
@@ -85,7 +105,7 @@ const Dashboard = () => {
           />
         </svg>
         <h1 className="font-bold text-blue-50 text-3xl font-sans px-10 md:px-32 z-20 motion-preset-slide-right mt-10">
-          Welcome Back! xxx!
+          Welcome Back! { user }!
         </h1>
       </div>
       <div className="w-auto mx-5 md:mx-20 p-4">
