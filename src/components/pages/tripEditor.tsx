@@ -7,9 +7,7 @@ import Tabs from "@components/reusable/tabs";
 import {
 	GoogleMap,
 	useLoadScript,
-	Libraries,
-	LoadScript,
-	Marker,
+	Libraries
 } from "@react-google-maps/api";
 import trips from "@assets/trip.json";
 import ChatBox from "@components/reusable/chatbox";
@@ -17,7 +15,7 @@ import useWindowSize from "@src/lib/window_size";
 
 const libraries: Libraries = ["places"];
 
-export default function TripEditor({ tripId }: { tripId?: string }) {
+export default function TripEditor({}: { tripId?: string }) {
 	const [isChatModalOpen, setIsChatModalOpen] = useState(false);
 	const { width } = useWindowSize();
 	const isMobile = width < 500;
@@ -26,8 +24,8 @@ export default function TripEditor({ tripId }: { tripId?: string }) {
 		libraries,
 	});
 
-	const [map, setMap] = useState<google.maps.Map | null>(null);
-	const [mapCenter, _] = useState<google.maps.LatLngLiteral>({
+	const [, setMap] = useState<google.maps.Map | null>(null);
+	const [mapCenter,] = useState<google.maps.LatLngLiteral>({
 		lat: 40.7128,
 		lng: -74.006,
 	});
