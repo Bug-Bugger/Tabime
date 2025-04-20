@@ -40,7 +40,6 @@ const NavBar: React.FC = () => {
         setUser(session.user);
       }
     };
-
     fetchUser();
 
     const { data: authListener } = supabase.auth.onAuthStateChange(

@@ -6,9 +6,7 @@ import { redirect } from "next/navigation";
 
 
 export async function GoogleLogin() {
-    console.log('GoogleLogin')
     const origin = (await headers()).get("origin");
-    console.log('origin', origin)
 
     const supabase = await createClient()
     

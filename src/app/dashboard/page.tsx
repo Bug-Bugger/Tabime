@@ -51,6 +51,7 @@ const Dashboard = () => {
         return;
       }
       console.log("User data:", user);
+      setUser(user.user_metadata.full_name);
     };
 
     fetchUser();
@@ -105,7 +106,7 @@ const Dashboard = () => {
           />
         </svg>
         <h1 className="font-bold text-blue-50 text-3xl font-sans px-10 md:px-32 z-20 motion-preset-slide-right mt-10">
-          Welcome Back! { user }!
+          Welcome Back, { user }!
         </h1>
       </div>
       <div className="w-auto mx-5 md:mx-20 p-4">

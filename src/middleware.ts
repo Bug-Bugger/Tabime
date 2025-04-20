@@ -5,11 +5,12 @@ export async function middleware(request: NextRequest) {
   return await updateSession(request)
 }
 
+// These are the paths that will require authentication
 export const config = {
   matcher: [
     "/",
-    "/login",
     "/dashboard",
+    "/trips"
     /*
      * Match all request paths except for the ones starting with:
      * - _next/static (static files)

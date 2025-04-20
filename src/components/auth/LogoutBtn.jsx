@@ -1,15 +1,19 @@
 "use client";
 
-import { redirect } from "next/dist/server/api-utils";
+import { redirect, useRouter } from "next/navigation";
 import { GoogleSignOut } from "./action";
 
 export default function LogoutBtn() {
+    const router = useRouter();
     const handleLogout = async () => {
         try {
             const response = await GoogleSignOut();
             console.log("Logout successful:", response);
 
-            // redirect("/");
+            // Redirect to the login page or any other page after logout
+            router.push("/login");
+            
+            window.location.reload();
         } catch (error) {
             console.error("Logout failed:", error);
         }
