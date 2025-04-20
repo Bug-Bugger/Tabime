@@ -15,7 +15,7 @@ import useWindowSize from "@src/lib/window_size";
 
 const libraries: Libraries = ["places"];
 
-export default function TripEditor({}: { tripId?: string }) {
+export default function TripEditor() {
 	const [isChatModalOpen, setIsChatModalOpen] = useState(false);
 	const { width } = useWindowSize();
 	const isMobile = width < 500;
@@ -124,7 +124,7 @@ export default function TripEditor({}: { tripId?: string }) {
 	);
 
 	const getMarkers = () => {
-		return trips.flatMap((day, _) =>
+		return trips.flatMap((day) =>
 			day.trips
 				.filter((trip) => trip.position) // Only include trips with position data
 				.map((trip) => ({
