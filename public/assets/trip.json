@@ -3,21 +3,27 @@
 		"day": "Day 1: Arrival",
 		"trips": [
 			{
+				"id": 0,
 				"location": "Charles de Gaulle Airport",
 				"plan": "Arrival - 10:30 AM",
-				"type": "Transport"
+				"type": "Transport",
+				"position": { "lat": 49.0097, "lng": 2.5479 }
 			},
 			{
+				"id": 1,
 				"location": "Le Petit Hotel",
 				"arrival": "Check-in - 2:00 PM",
 				"type": "Accommodation",
-				"price": "¥10,000"
+				"price": "¥10,000",
+				"position": { "lat": 35.6762, "lng": 139.6503 }
 			},
 			{
+				"id": 2,
 				"location": "Cafe de Paris",
 				"arrival": "Dinner - 7:00 PM",
 				"type": "Dining",
-				"price": "¥10,000"
+				"price": "¥10,000",
+				"position": { "lat": -33.8688, "lng": 151.2093 }
 			}
 		]
 	},
@@ -25,21 +31,27 @@
 		"day": "Day 2: Exploration",
 		"trips": [
 			{
-				"location": "Charles de Gaulle Airport",
-				"plan": "Arrival - 10:30 AM",
-				"type": "Transport"
+				"id": 3,
+				"location": "Louvre Museum",
+				"plan": "Visit - 10:30 AM",
+				"type": "Attraction",
+				"position": { "lat": -22.9068, "lng": -43.1729 }
 			},
 			{
-				"location": "Le Petit Hotel",
-				"arrival": "Check-in - 2:00 PM",
-				"type": "Accommodation",
-				"price": "¥10,000"
+				"id": 4,
+				"location": "Eiffel Tower",
+				"arrival": "Visit - 2:00 PM",
+				"type": "Attraction",
+				"price": "¥5,000",
+				"position": { "lat": 40.7128, "lng": -74.006 }
 			},
 			{
-				"location": "Cafe de Paris",
+				"id": 5,
+				"location": "Le Comptoir",
 				"arrival": "Dinner - 7:00 PM",
 				"type": "Dining",
-				"price": "¥10,000"
+				"price": "¥8,000",
+				"position": { "lat": 1.3521, "lng": 103.8198 }
 			}
 		]
 	},
@@ -47,21 +59,27 @@
 		"day": "Day 3: Chill",
 		"trips": [
 			{
-				"location": "Charles de Gaulle Airport",
-				"plan": "Arrival - 10:30 AM",
-				"type": "Transport"
+				"id": 6,
+				"location": "Luxembourg Gardens",
+				"plan": "Morning Walk - 10:30 AM",
+				"type": "Recreation",
+				"position": { "lat": 55.7558, "lng": 37.6173 }
 			},
 			{
-				"location": "Le Petit Hotel",
-				"arrival": "Check-in - 2:00 PM",
-				"type": "Accommodation",
-				"price": "¥10,000"
+				"id": 7,
+				"location": "Montmartre",
+				"arrival": "Afternoon Visit - 2:00 PM",
+				"type": "Attraction",
+				"price": "¥3,000",
+				"position": { "lat": -34.6037, "lng": -58.3816 }
 			},
 			{
-				"location": "Cafe de Paris",
+				"id": 8,
+				"location": "Le Bistro Parisien",
 				"arrival": "Dinner - 7:00 PM",
 				"type": "Dining",
-				"price": "¥10,000"
+				"price": "¥12,000",
+				"position": { "lat": 25.2048, "lng": 55.2708 }
 			}
 		]
 	}
