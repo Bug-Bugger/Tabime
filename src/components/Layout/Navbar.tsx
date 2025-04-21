@@ -33,17 +33,9 @@ const NavBar: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 
-    const fetchUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session?.user) {
-        console.log("User fetched from session:", session.user);
-        setUser(session.user);
-      }
-    };
-    fetchUser();
-
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
+        console.log("Auth event:", event);
         if (event === "SIGNED_IN") {
           setUser(session.user);
         } else if (event === "SIGNED_OUT") {

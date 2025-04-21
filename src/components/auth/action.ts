@@ -4,7 +4,6 @@ import { createClient } from '@utils/supabase/server'
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-
 export async function GoogleLogin() {
     const origin = (await headers()).get("origin");
 

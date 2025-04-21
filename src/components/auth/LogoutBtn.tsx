@@ -10,7 +10,7 @@ export default function LogoutBtn() {
             const response = await GoogleSignOut();
             console.log("Logout successful:", response);
 
-            // Redirect to the login page or any other page after logout
+            // Redirect to the login page page after logout
             router.push("/login");
             
             window.location.reload();
