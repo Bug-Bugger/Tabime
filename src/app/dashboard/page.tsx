@@ -25,6 +25,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createClient } from "@src/utils/supabase/client";
+import RequireAuth from "@components/auth/requireAuth";
 
 const animeList: Anime[] = TEMP_ANIME;
 
@@ -59,6 +60,7 @@ const Dashboard = () => {
   , []);
 
   return (
+    <RequireAuth>
     <div className="min-h-screen w-full">
       <div className="relative min-h-52 h-[20%] w-full bg-gradient-to-t from-[#839ee3] to-[#5887fe] shadow-md flex items-center">
         <div className="absolute top-[12%] left-[5%] h-24 w-24 rounded-full bg-[#8656ff] opacity-20 z-0"></div>
@@ -330,6 +332,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    </RequireAuth>
   );
 };
 
