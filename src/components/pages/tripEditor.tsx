@@ -2,12 +2,13 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@components/ui/card";
 import { Button } from "@components/ui/button";
-import { ChevronLeft, ChevronRight, Calendar } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar, Plus } from "lucide-react";
 import Tabs from "@components/reusable/tabs";
 import { GoogleMap, useLoadScript, Libraries } from "@react-google-maps/api";
 import trips from "@assets/trip.json";
 import ChatBox from "@components/reusable/chatbox";
 import useWindowSize from "@src/lib/window_size";
+import { TabInfo } from "@components/types/reusableTypes";
 
 const libraries: Libraries = ["places"];
 
@@ -45,80 +46,98 @@ export default function TripEditor() {
   const date = () => {
     const today = new Date();
     const day = String(today.getDate()).padStart(2, "0");
-    const month = getMonthName(today.getMonth() + 1); // Month is 0-indexed
+    const month = getMonthName(today.getMonth() + 1); // Get month name
     const year = today.getFullYear();
 
-    const next = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const next = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // Calculate date 7 days later
     const next_day = String(next.getDate()).padStart(2, "0");
+    // Handle month/year change for the end date if necessary
+    const next_month = getMonthName(next.getMonth() + 1);
+    const next_year = next.getFullYear();
 
-    const formattedDate = `${month} ${day} - ${next_day}, ${year}`;
-    return formattedDate;
+    if (year !== next_year) {
+      return `${month} ${day}, ${year} - ${next_month} ${next_day}, ${next_year}`;
+    } else if (month !== next_month) {
+      return `${month} ${day} - ${next_month} ${next_day}, ${year}`;
+    } else {
+      return `${month} ${day} - ${next_day}, ${year}`;
+    }
   };
 
-  const tripDescription = (
-    <div className="p-6 flex flex-col h-full">
-      <div className="flex flex-col gap-4">
-        {trips.map((dayTrip, dayIndex) => (
-          <div key={dayIndex} className="flex flex-col gap-2">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-black">{dayTrip.day}</h3>
-              <button className="text-blue-500">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                  />
-                </svg>
-              </button>
-            </div>
-            <ul className="text-white/80 text-sm space-y-4">
-              {dayTrip.trips.map((trip, tripIndex) => (
-                <li key={tripIndex}>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="text-xl font-bold">
-                        {trip.location}
-                      </CardTitle>
-                    </CardHeader>
-                    {trip.plan && (
-                      <CardContent>
-                        <p>{trip.plan}</p>
-                      </CardContent>
-                    )}
-                    {trip.arrival && (
-                      <CardContent>
-                        <p>{trip.arrival}</p>
-                      </CardContent>
-                    )}
+  const itineraryContent = (
+    <div className="p-4 flex flex-col gap-4">
+      {trips.map((dayTrip, dayIndex) => (
+        <div key={dayIndex} className="flex flex-col gap-2">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-800">
+              {dayTrip.day}
+            </h3>
+            <button className="text-blue-600 hover:text-blue-800 p-1 rounded-full hover:bg-blue-100 transition-colors">
+              <Plus className="w-5 h-5" />
+            </button>
+          </div>
+          <ul className="space-y-5">
+            {dayTrip.trips.map((trip, tripIndex) => (
+              <li key={tripIndex}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{trip.location}</CardTitle>
+                  </CardHeader>
+                  {(trip.plan || trip.arrival) && (
                     <CardContent>
-                      <div className="flex items-center space-x-2">
-                        <span className="bg-blue-100 bg-opacity-70 text-blue-800 text-sm px-3 py-1 rounded-full">
-                          {trip.type}
-                        </span>
+                      {trip.plan && <p>{trip.plan}</p>}
+                      {trip.arrival && <p>Arrival: {trip.arrival}</p>}
+                    </CardContent>
+                  )}
+                  {(trip.type || trip.price) && (
+                    <CardContent>
+                      <div className="flex items-center flex-wrap gap-2">
+                        {trip.type && (
+                          <span className="bg-blue-100 text-blue-800 text-xs px-2.5 py-0.5 rounded-full font-medium">
+                            {trip.type}
+                          </span>
+                        )}
                         {trip.price && (
-                          <span className="bg-yellow-100 bg-opacity-70 text-blue-800 text-sm px-3 py-1 rounded-full">
+                          <span className="bg-green-100 text-green-800 text-xs px-2.5 py-0.5 rounded-full font-medium">
                             {trip.price}
                           </span>
                         )}
                       </div>
                     </CardContent>
-                  </Card>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+                  )}
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
+
+  const budgetContent = (
+    <div className="p-4">
+      <h3 className="text-lg font-semibold mb-2">Budget Overview</h3>
+      <p className="text-gray-600">
+        Budget details and tracking will go here...
+      </p>
+    </div>
+  );
+
+  const notesContent = (
+    <div className="p-4">
+      <h3 className="text-lg font-semibold mb-2">Trip Notes</h3>
+      <textarea
+        className="w-full h-40 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Enter your notes, reminders, or links here..."
+      ></textarea>
+    </div>
+  );
+
+  const tabData: TabInfo[] = [
+    { label: "Itinerary", content: itineraryContent },
+    { label: "Budget", content: budgetContent },
+    { label: "Notes", content: notesContent },
+  ];
 
   const getMarkers = () => {
     return trips.flatMap((day) =>
@@ -137,8 +156,7 @@ export default function TripEditor() {
     <div className="relative h-screen w-full overflow-hidden">
       {/* Full Screen Map */}
       <div className="absolute inset-0 w-full h-full">
-        <div className="h-20 w-full absolute top-0 left-0 bg-gradient-to-b from-secondary via-secondary/80 to-transparent z-10" />
-
+        <div className="h-20 w-full absolute top-0 left-0 bg-gradient-to-b from-primary/90 via-primary/70 to-transparent z-10 pointer-events-none" />
         <GoogleMap
           mapContainerClassName="w-full h-full"
           center={mapCenter}
@@ -197,7 +215,7 @@ export default function TripEditor() {
             </div>
           </div>
           <div className="flex flex-col">
-            <Tabs content={[tripDescription]} />
+            <Tabs tabs={tabData} />
           </div>
         </div>
       )}
