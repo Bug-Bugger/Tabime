@@ -47,3 +47,16 @@ export const DEFAULT_INTENSITY: ColorIntensity = {
   hoverAccent: 400,
   glow: 300,
 };
+
+/**
+ * Props for the Tab component
+ */
+export interface TabInfo {
+  label: string;
+  content: React.ReactNode;
+}
+
+export interface TabProps {
+  tabs: TabInfo[];
+  initialTab?: number;
+}
