@@ -1,19 +1,10 @@
 "use client";
 
 import { useAuth } from "./SupabaseProvider";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { Loader2 } from "lucide-react";
 
 export default function RequireAuth({ children }: { children: React.ReactNode }) {
   const { session, isLoading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isLoading && !session) {
-      router.push("/login");
-    }
-  }, [isLoading, session, router]);
 
   if (isLoading) {
     return (

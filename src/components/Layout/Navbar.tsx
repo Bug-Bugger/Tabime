@@ -8,11 +8,15 @@ import Link from "next/link";
 import LoginBtn from "@components/auth/LoginBtn";
 import LogoutBtn from "@components/auth/LogoutBtn";
 import { createClient } from "@utils/supabase/client";
+import { useAuth } from "@components/auth/SupabaseProvider";
+import { Loader2 } from "lucide-react";
+
 
 const NavBar: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const { isLoading } = useAuth();
 
   const supabase = createClient();
 
@@ -49,6 +53,10 @@ const NavBar: React.FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  if (isLoading) {
+    return null; // This is to ensure the login and logout don't flicker
+  }
 
   return (
     <nav
