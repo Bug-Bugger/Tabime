@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import {
   AnimatedButtonProps,
   DEFAULT_INTENSITY,
-} from "@components/types/ReusableTypes";
+} from "@components/types/reusableTypes";
 
 const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
   (

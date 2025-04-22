@@ -32,10 +32,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.ja",
-    "src/components/reusable/GradientButton.jsx",
-    "src/components/pages/description.tsx",
-    "src/components/reusable/meshGradientBackground.tsx",
-    "public/assets/pointer.tsx"
+    "public/**/*"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,9 +1,7 @@
 "use client";
 
-import map from "@assets/japan.svg";
 import Waypoint from "@assets/waypoint";
 import Pointer from "@assets/pointer";
-import wand from "@assets/wand.svg";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -216,7 +214,9 @@ const Description: React.FC = () => {
             ref={collabPointerRef}
           />
           <Image
-            src={wand}
+            src={"/assets/wand.svg"}
+            width={40}
+            height={40}
             alt="Wand"
             className="absolute top-[45%] left-[35%] w-[6%] h-auto z-40 opacity-0"
             ref={wandRef}
@@ -323,7 +323,13 @@ const Description: React.FC = () => {
             color="#47adfa"
             ref={spRef}
           />
-          <Image src={map} alt="Map" className="w-full h-auto" />
+          <Image
+            src={"/assets/japan.svg"}
+            height={500}
+            width={500}
+            alt="Map"
+            className="w-full h-auto"
+          />
         </div>
       </div>
     </div>
