@@ -12,7 +12,7 @@ import { TabInfo } from "@components/types/reusableTypes";
 
 const libraries: Libraries = ["places"];
 
-export default function TripEditor() {
+export default function TripEditor({ tripId }: { tripId: string }) {
   const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   const { width } = useWindowSize();
   const isMobile = width < 500;
@@ -27,6 +27,8 @@ export default function TripEditor() {
     lng: -74.006,
   });
   const [isSideBannerOpen, setIsSideBannerOpen] = useState<boolean>(false);
+
+  console.log("TripId", tripId);
 
   if (loadError) {
     return <div>Error loading maps. Please check your API key.</div>;
@@ -184,11 +186,10 @@ export default function TripEditor() {
       {/* Toggle Sidebar Button - Fixed position */}
       {!(isChatModalOpen && isMobile) && (
         <Button
-          className={`fixed ${
-            isSideBannerOpen
-              ? "right-[320px] md:right-[320px] lg:right-[384px]"
-              : "right-6"
-          } bottom-10 justify-center items-center transition-all duration-300 opacity-100`}
+          className={`fixed ${isSideBannerOpen
+            ? "right-[320px] md:right-[320px] lg:right-[384px]"
+            : "right-6"
+            } bottom-10 justify-center items-center transition-all duration-300 opacity-100`}
           onClick={() => setIsSideBannerOpen(!isSideBannerOpen)}
         >
           {isSideBannerOpen ? (
