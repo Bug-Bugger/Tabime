@@ -7,18 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import LoginBtn from "@components/auth/LoginBtn";
 import LogoutBtn from "@components/auth/LogoutBtn";
-import { createClient } from "@utils/supabase/client";
 import { useAuth } from "@components/auth/SupabaseProvider";
-import { Loader2 } from "lucide-react";
 
 
 const NavBar: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  const { isLoading } = useAuth();
-
-  const supabase = createClient();
+  const { session, isLoading } = useAuth();
 
   const navItems = ["Dashboard", "Trips", "Discover"];
 
@@ -37,17 +32,6 @@ const NavBar: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        console.log("Auth event:", event);
-        if (event === "SIGNED_IN") {
-          setUser(session.user);
-        } else if (event === "SIGNED_OUT") {
-          setUser(null);
-        }
-      }
-    );
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
@@ -55,7 +39,7 @@ const NavBar: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return null; // This is to ensure the login and logout don't flicker
+    return; // This is to ensure the login and logout don't flicker
   }
 
   return (
@@ -98,7 +82,7 @@ const NavBar: React.FC = () => {
           </ul>
 
           <div className="flex items-center">
-            {user ? (
+            {session ? (
               <LogoutBtn />
             ) : (
               <LoginBtn />

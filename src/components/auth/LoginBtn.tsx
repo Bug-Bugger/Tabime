@@ -7,7 +7,7 @@ export default function LoginBtn() {
     const router = useRouter();
     const handleLogin = async () => {
         try {
-            const response = await GoogleLogin();
+            const response = await GoogleLogin()
 
             console.log("Login successful:", response);
         } catch (error) {
