@@ -5,9 +5,8 @@ import { GoogleLogin } from "./action";
 export default function LoginBtn() {
     const handleLogin = async () => {
         try {
-            const response = await GoogleLogin()
-
-            console.log("Login successful:", response);
+            await GoogleLogin()
+            
         } catch (error) {
             console.error("Login failed:", error);
         }

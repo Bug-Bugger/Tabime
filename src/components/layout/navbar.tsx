@@ -131,7 +131,11 @@ const NavBar: React.FC = () => {
             ))}
           </ul>
           <div className="flex justify-center mt-4">
-            <LoginBtn />
+            {session ? (
+              <LogoutBtn />
+            ) : (
+              <LoginBtn />
+            )}
           </div>
         </div>
       </div>

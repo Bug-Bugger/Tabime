@@ -7,8 +7,7 @@ export default function LogoutBtn() {
     const router = useRouter();
     const handleLogout = async () => {
         try {
-            const response = await GoogleSignOut();
-            console.log("Logout successful:", response);
+           await GoogleSignOut();
 
             // Redirect to the login page page after logout
             router.push("/login");
