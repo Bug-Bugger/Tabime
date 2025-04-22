@@ -1,5 +1,5 @@
 import TripEditor from "@components/pages/tripEditor";
-export default function DocumentPage({
+export default function TripDetailPage({
   params: { tripId },
 }: {
   params: { tripId: string };
