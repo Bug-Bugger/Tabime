@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { GoogleLogin } from "./action";
 
 export default function LoginBtn() {
