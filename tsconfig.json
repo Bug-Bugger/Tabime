@@ -22,7 +22,8 @@
       "@components/*": ["./src/components/*"],
       "@assets/*": ["./public/assets/*"],
       "@src/*": ["./src/*"],
-      "@styles/*": ["./src/styles/*"]
+      "@styles/*": ["./src/styles/*"],
+      "@utils/*": ["./src/utils/*"],
     }
   },
   "include": [
@@ -31,10 +32,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.ja",
-    "src/components/Reusable/GradientButton.jsx",
-    "src/components/Pages/FrontPage/Description.tsx",
-    "src/components/Reusable/MeshGradientBackground.tsx",
-    "public/assets/pointer.tsx"
+    "public/**/*"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,0 +1,28 @@
+name: TypeScript Check & Lint
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, dev]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+
+      - name: TypeScript Check
+        run: npx tsc --noEmit
+
+      - name: ESLint Check
+        run: npx eslint ./src --ext .ts,.tsx
