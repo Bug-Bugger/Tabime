@@ -3,7 +3,7 @@
 import { useAuth } from "./SupabaseProvider";
 import { Loader2 } from "lucide-react";
 
-export default function RequireAuth({ children }: { children: React.ReactNode }) {
+export default function RequireLoad({ children }: { children: React.ReactNode }) {
   const { session, isLoading } = useAuth();
 
   if (isLoading) {
