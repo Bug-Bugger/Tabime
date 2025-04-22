@@ -3,7 +3,8 @@ import { GeistMono } from "geist/font/mono";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import Navbar from "@components/layout/navbar";
-import ObserverProvider from "@components/layout/observerProvider";
+import { Providers } from "./providers";
+
 
 export const metadata: Metadata = {
   title: "Tabime",
@@ -27,13 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${lexend.variable} ${GeistMono.variable}`}>
-      <ObserverProvider>
+    
+    <Providers>
         <body>
           <Navbar />
           <main>{children}</main>
           {/* <Footer /> */}
         </body>
-      </ObserverProvider>
+        </Providers>
     </html>
   );
 }

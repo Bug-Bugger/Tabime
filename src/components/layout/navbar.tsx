@@ -4,10 +4,15 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import LoginBtn from "@components/auth/LoginBtn";
+import LogoutBtn from "@components/auth/LogoutBtn";
+import { useAuth } from "@components/auth/SupabaseProvider";
+
 
 const NavBar: React.FC = () => {
   const [isSticky, setSticky] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { session, isLoading } = useAuth();
 
   const navItems = ["Dashboard", "Trips", "Discover"];
 
@@ -21,14 +26,20 @@ const NavBar: React.FC = () => {
     }
   };
 
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  if (isLoading) {
+    return; // This is to ensure the login and logout don't flicker
+  }
 
   return (
     <nav
@@ -71,9 +82,13 @@ const NavBar: React.FC = () => {
             ))}
           </ul>
 
-          <button className="px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300">
-            Login
-          </button>
+          <div className="flex items-center">
+            {session ? (
+              <LogoutBtn />
+            ) : (
+              <LoginBtn />
+            )}
+          </div>
         </div>
 
         {/* mobile navbar */}
@@ -116,9 +131,11 @@ const NavBar: React.FC = () => {
             ))}
           </ul>
           <div className="flex justify-center mt-4">
-            <button className="px-4 py-2 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 transition duration-300">
-              Login
-            </button>
+            {session ? (
+              <LogoutBtn />
+            ) : (
+              <LoginBtn />
+            )}
           </div>
         </div>
       </div>
