@@ -11,7 +11,8 @@ const AuthContext = createContext<{
     session: Session | null;
     supabase: typeof supabase;
     isLoading: boolean;
-}>(undefined);
+} | undefined>(undefined); // Initially undefined, but the error would still be 
+                           // handled in useAuth()
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [session, setSession] = useState<Session | null>(null);

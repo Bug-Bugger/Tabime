@@ -25,7 +25,7 @@ import {
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createClient } from "@src/utils/supabase/client";
-import RequireAuth from "@components/auth/requireAuth";
+import RequireAuth from "@components/auth/RequireAuth";
 
 const animeList: Anime[] = TEMP_ANIME;
 
@@ -52,7 +52,7 @@ const Dashboard = () => {
         return;
       }
       console.log("User data:", user);
-      setUser(user.user_metadata.full_name);
+      setUser(user?.user_metadata.full_name);
     };
 
     fetchUser();
