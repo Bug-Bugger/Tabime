@@ -165,8 +165,11 @@ const Dashboard = () => {
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-5">
             {animeList.map((anime, index) => (
-              <Card key={index} className="w-full motion-preset-blur-up">
-                <CardContent className="p-5">
+              <Card
+                key={index}
+                className="w-full motion-preset-blur-up h-full flex flex-col"
+              >
+                <CardContent className="p-5 h-fit">
                   <div className="w-full h-52 bg-blue-200 rounded-md overflow-hidden flex items-center relative aspect-[500/300]">
                     <Image
                       alt={anime.title}
@@ -176,23 +179,25 @@ const Dashboard = () => {
                     />
                   </div>
                 </CardContent>
-                <CardHeader className="pt-0">
+                <CardHeader className="pt-0 flex flex-col justify-between flex-1">
                   <div className="flex flex-wrap ">
                     {anime.tags.map((tag, index) => (
                       <Badge
                         key={index}
-                        className="mr-2 bg-blue-700 hover:bg-blue-800 select-none"
+                        className="mr-2 mb-2 bg-blue-700 hover:bg-blue-800 select-none"
                       >
                         {tag}
                       </Badge>
                     ))}
                   </div>
-                  <CardTitle className="text-lg font-sans text-blue-500">
-                    {anime.title}
-                  </CardTitle>
-                  <CardDescription className="text-blue-400 mt-2">
-                    {anime.locationCount} locations available
-                  </CardDescription>
+                  <div>
+                    <CardTitle className="text-lg font-sans text-blue-500">
+                      {anime.title}
+                    </CardTitle>
+                    <CardDescription className="text-blue-400 mt-2">
+                      {anime.locationCount} locations available
+                    </CardDescription>
+                  </div>
                   <Button className="mt-4 bg-[#9f73f1] hover:bg-[#7e4ff9]">
                     View
                   </Button>

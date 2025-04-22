@@ -78,6 +78,40 @@ export const TRIP_SORTS: TripSort[] = [
   { type: TripSortType.LOCATION_COUNT, label: "Location Count" },
 ];
 
+export enum DiscoverFilterType {
+  ANIME = "Anime",
+  LOCATION = "Location",
+  TRIP = "Trip",
+}
+
+export interface DiscoverFilter {
+  type: DiscoverFilterType;
+  label: string;
+}
+
+export const DISCOVER_FILTERS: DiscoverFilter[] = [
+  { type: DiscoverFilterType.ANIME, label: "Anime" },
+  { type: DiscoverFilterType.LOCATION, label: "Location" },
+  { type: DiscoverFilterType.TRIP, label: "Trip" },
+];
+
+export enum DiscoverSortType {
+  RELEVANCE = "Relevance",
+  POPULARITY = "Popularity",
+  NEWEST = "Newest",
+}
+
+export interface DiscoverSort {
+  type: DiscoverSortType;
+  label: string;
+}
+
+export const DISCOVER_SORTS: DiscoverSort[] = [
+  { type: DiscoverSortType.RELEVANCE, label: "Relevance" },
+  { type: DiscoverSortType.POPULARITY, label: "Popularity" },
+  { type: DiscoverSortType.NEWEST, label: "Newest" },
+];
+
 export const TEMP_USER_A: User = {
   id: "1",
   username: "User",
