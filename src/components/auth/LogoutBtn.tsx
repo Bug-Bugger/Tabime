@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { GoogleSignOut } from "./action";
 
 export default function LogoutBtn() {

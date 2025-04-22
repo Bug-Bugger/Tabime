@@ -1,10 +1,9 @@
 "use client";
 
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { GoogleLogin } from "./action";
 
 export default function LoginBtn() {
-    const router = useRouter();
     const handleLogin = async () => {
         try {
             const response = await GoogleLogin()
