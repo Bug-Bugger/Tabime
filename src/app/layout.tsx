@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lexend.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${lexend.variable} ${GeistMono.variable}`} suppressHydrationWarning>
     
     <Providers>
         <body>

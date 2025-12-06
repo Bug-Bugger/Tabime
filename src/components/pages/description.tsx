@@ -177,25 +177,25 @@ const Description: React.FC = () => {
           <div className="relative drop-shadow-sm">
             <div
               className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%] "
-              ref={(el) => (textRef.current[0] = el)}
+              ref={(el) => { textRef.current[0] = el; }}
             >
               Add places from guides with 1 click
             </div>
             <div
               className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
-              ref={(el) => (textRef.current[1] = el)}
+              ref={(el) => { textRef.current[1] = el; }}
             >
               Seemless Collaboration with friends
             </div>
             <div
               className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
-              ref={(el) => (textRef.current[2] = el)}
+              ref={(el) => { textRef.current[2] = el; }}
             >
               Chaos in your travel plans?
             </div>
             <div
               className="absolute top-0 left-0 w-full opacity-0 transform translate-y-[30%]"
-              ref={(el) => (textRef.current[3] = el)}
+              ref={(el) => { textRef.current[3] = el; }}
             >
               Fixed with one tap!
             </div>
@@ -239,7 +239,7 @@ const Description: React.FC = () => {
               </linearGradient>
             </defs>
             <path
-              ref={(el) => (trivialPathRef.current[0] = el)}
+              ref={(el) => { trivialPathRef.current[0] = el; }}
               d="M 81 13.5 L 19 90.5"
               stroke="url(#pathGradient)"
               strokeWidth="5"
@@ -247,7 +247,7 @@ const Description: React.FC = () => {
               vectorEffect="non-scaling-stroke"
             />
             <path
-              ref={(el) => (trivialPathRef.current[1] = el)}
+              ref={(el) => { trivialPathRef.current[1] = el; }}
               d="M 19 90.5 L 63.5 70.5"
               stroke="url(#pathGradient)"
               strokeWidth="5"
@@ -255,7 +255,7 @@ const Description: React.FC = () => {
               vectorEffect="non-scaling-stroke"
             />
             <path
-              ref={(el) => (trivialPathRef.current[2] = el)}
+              ref={(el) => { trivialPathRef.current[2] = el; }}
               d="M 63.5 70.5 L 33 79.5"
               stroke="url(#pathGradient)"
               strokeWidth="5"

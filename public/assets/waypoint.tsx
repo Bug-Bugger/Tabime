@@ -1,5 +1,4 @@
 //Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools
-import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
 interface WaypointProps {

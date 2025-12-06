@@ -49,7 +49,7 @@ const Tabs: React.FC<TabProps> = ({ tabs = [], initialTab = 0 }) => {
         {tabs.map((tab, index) => (
           <button
             key={tab.label}
-            ref={(el) => (tabRefs.current[index] = el)}
+            ref={(el) => { tabRefs.current[index] = el; }}
             className={cn(
               "flex-1 py-3 md:py-4 px-1 text-center text-sm md:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 transition-colors duration-200 ease-in-out",
               activeTab === index
