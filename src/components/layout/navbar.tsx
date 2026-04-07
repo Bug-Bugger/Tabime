@@ -38,14 +38,16 @@ const NavBar: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return; // This is to ensure the login and logout don't flicker
+    return (
+      <nav className="fixed w-full z-[500] h-[72px] bg-transparent" />
+    );
   }
 
   return (
     <nav
       className={`fixed w-full z-[500] transition-all duration-500 ease-in-out font-sans ${
         isSticky || mobileMenuOpen
-          ? "bg-[#97a6df] bg-opacity-50 backdrop-blur-lg"
+          ? "bg-blue-500/50 backdrop-blur-lg"
           : "bg-transparent backdrop-blur-0"
       } ${isSticky && !mobileMenuOpen ? "shadow-md" : ""}`}
     >
@@ -56,7 +58,7 @@ const NavBar: React.FC = () => {
             width={40}
             height={40}
             alt="Tabime Logo"
-            className="w-10 h-10 hover:rotate-180 ease-in-out transition-all duration-500"
+            className="w-10 h-10 hover:scale-110 ease-in-out transition-all duration-300"
             priority={true}
           />
           <p className="text-2xl font-sans font-semibold ml-3 text-blue-50 drop-shadow-sm">
@@ -70,11 +72,11 @@ const NavBar: React.FC = () => {
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="relative cursor-pointer transition-colors duration-300 hover:text-[#2563eb] group"
+                className="relative cursor-pointer transition-colors duration-300 hover:text-orange-400 group"
               >
                 <a
                   href={`/${item.toLowerCase()}`}
-                  className="group-hover:after:w-full after:content-[''] after:bg-[#2563eb] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300"
+                  className="group-hover:after:w-full after:content-[''] after:bg-orange-400 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300"
                 >
                   {item}
                 </a>
@@ -119,10 +121,10 @@ const NavBar: React.FC = () => {
             {navItems.map((item, index) => (
               <li
                 key={index}
-                className="relative cursor-pointer transition-colors duration-300 hover:text-[#2563eb]"
+                className="relative cursor-pointer transition-colors duration-300 hover:text-orange-400"
               >
                 <a
-                  className="relative hover:after:w-full after:content-[''] after:bg-[#2563eb] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300"
+                  className="relative hover:after:w-full after:content-[''] after:bg-orange-400 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:transition-all after:duration-300"
                   href={`/${item.toLowerCase()}`}
                 >
                   {item}

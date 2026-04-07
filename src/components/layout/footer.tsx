@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#887fde] text-[#FFFFFF] pt-16 pb-8">
+    <footer className="bg-blue-600 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
@@ -18,11 +18,11 @@ export default function Footer() {
               </div>
               <span className="font-bold text-xl">Tabime</span>
             </div>
-            <p className="text-[#E8E9F3] mb-4">
-              Bringing anime fans to real-world locations from their favorite
-              series.
+            <p className="text-blue-100 mb-4">
+              Your travel companion for incredible journeys. Discover
+              anime-inspired destinations and plan the perfect trip.
             </p>
-            <div className="flex space-x-4 text-[#E8E9F3]">
+            <div className="flex space-x-4 text-blue-100">
               <a href="#" className="hover:text-white transition-colors">
                 <svg
                   className="h-6 w-6"
@@ -55,7 +55,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Features</h3>
-            <ul className="space-y-2 text-[#E8E9F3]">
+            <ul className="space-y-2 text-blue-100">
               <li>
                 <Link
                   href="/features/route-planning"
@@ -93,7 +93,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
-            <ul className="space-y-2 text-[#E8E9F3]">
+            <ul className="space-y-2 text-blue-100">
               <li>
                 <Link
                   href="/blog"
@@ -131,7 +131,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Company</h3>
-            <ul className="space-y-2 text-[#E8E9F3]">
+            <ul className="space-y-2 text-blue-100">
               <li>
                 <Link
                   href="/about"
@@ -168,8 +168,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8">
-          <p className="text-gray-300 text-center">
+        <div className="border-t border-white/15 pt-8">
+          <p className="text-blue-100/70 text-center">
             &copy; {new Date().getFullYear()} Tabime. All rights reserved.
           </p>
         </div>

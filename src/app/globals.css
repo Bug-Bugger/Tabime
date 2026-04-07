@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 240, 67%, 99%;
+    --background: 210 40% 98%; /* #F8FAFC cloud white */
 
     --foreground: 0 0% 3.9%;
 
@@ -16,20 +16,19 @@
 
     --popover-foreground: 0 0% 3.9%;
 
-    --primary: 222 75% 62%; /* #5680e9 */
+    --primary: 217 91% 60%; /* #3B82F6 sky blue */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 203 76% 64%; /* #5ab9ea */
+    --secondary: 199 89% 60%; /* #38BDF8 light sky */
     --secondary-foreground: 0 0% 10%;
 
-    --muted: 230 43% 83%; /* #c1c8e4 */
+    --muted: 214 32% 91%;
     --muted-foreground: 0 0% 25%;
 
-    --accent: 261 59% 60%; /* #8860d0 */
+    --accent: 25 95% 53%; /* #F97316 sunset orange */
     --accent-foreground: 0 0% 100%;
 
-    /* Light blue */
-    --highlight: 199 73% 72%; /* #84ceeb */
+    --highlight: 45 97% 65%; /* #FCD34D golden hour */
     --highlight-foreground: 0 0% 10%;
 
     --destructive: 0 84.2% 60.2%;
@@ -117,7 +116,8 @@
 /* Overlay Scrollbar Styling */
 * {
   /* Make scrollbar overlay the content */
-  scrollbar-width: none; /* Hide default scrollbar in Firefox */
+  scrollbar-width: thin; /* Thin scrollbar in Firefox */
+  scrollbar-color: rgba(136, 136, 136, 0.5) transparent;
   
   /* Ensure smooth scrolling */
   scroll-behavior: smooth;
